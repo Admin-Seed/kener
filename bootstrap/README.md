@@ -42,8 +42,13 @@ added to one. Do that once in the UI after the first run.
 ## Shape notes
 
 `type_data` is written here as a **readable object** so that the `eval` function
-bodies are diffable. The API stores it as a JSON string, so `bootstrap.py`
-stringifies it on the way out. Do not pre-stringify it in `monitors.json`.
+bodies are diffable, and it is sent to the API as an object too. **Do not
+stringify it.** The API stringifies it itself before storing; sending an
+already-stringified value double-encodes it, and the failure is quiet and
+confusing — the column parses as a JSON *string* rather than an object, every
+field including `url` reads back empty, and axios then fails with `Invalid URL`
+on every check while the monitor simply shows DOWN. Measured here on
+2026-09-14, which is why `wire()` exists.
 
 `tag` is the identity key and must be unique across every monitor. Gatus allowed
 the same name in two groups — `csnupv` exists in `seed`, `coortex` and

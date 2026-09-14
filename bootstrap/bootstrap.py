@@ -58,11 +58,17 @@ def call(method, path, payload=None):
 
 
 def wire(monitor):
-    """monitors.json keeps type_data as a readable object so the eval bodies are
-    diffable. The API stores it as a JSON string, so stringify on the way out."""
+    """Send type_data as an OBJECT.
+
+    The API stringifies it itself before storing. Sending an already-stringified
+    value double-encodes it: the column then parses as a JSON *string* rather
+    than an object, every field including `url` reads back empty, and axios
+    fails with "Invalid URL" on every check. Measured, not theorised -- it is
+    why this function exists at all."""
     out = dict(monitor)
-    if isinstance(out.get("type_data"), (dict, list)):
-        out["type_data"] = json.dumps(out["type_data"])
+    td = out.get("type_data")
+    if isinstance(td, str):
+        out["type_data"] = json.loads(td)
     return out
 
 
