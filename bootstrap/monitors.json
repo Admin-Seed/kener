@@ -941,7 +941,7 @@
   {
     "tag": "infra-azure-sql",
     "name": "Database Gateway",
-    "description": "",
+    "description": "Database gateway status",
     "cron": "*/5 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
@@ -954,12 +954,13 @@
       "port": "1433",
       "degradedRemainingHours": "168",
       "downRemainingHours": "24"
-    }
+    },
+    "external_url": null
   },
   {
     "tag": "home-seed",
     "name": "Seed APS",
-    "description": "Internal link: tutorial.seedaps.com",
+    "description": "Seed APS environment status",
     "cron": "* * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
@@ -967,7 +968,6 @@
     "monitor_type": "GROUP",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
-    "external_url": "https://tutorial.seedaps.com",
     "type_data": {
       "monitors": [
         {
@@ -1104,12 +1104,13 @@
         }
       ],
       "latencyCalculation": "AVG"
-    }
+    },
+    "external_url": null
   },
   {
     "tag": "home-coortex",
     "name": "Coortex APS",
-    "description": "Internal link: tutorial-mesas.coortex.com",
+    "description": "Coortex APS environment status",
     "cron": "* * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
@@ -1117,7 +1118,6 @@
     "monitor_type": "GROUP",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
-    "external_url": "https://tutorial-mesas.coortex.com",
     "type_data": {
       "monitors": [
         {
@@ -1134,12 +1134,13 @@
         }
       ],
       "latencyCalculation": "AVG"
-    }
+    },
+    "external_url": null
   },
   {
     "tag": "home-integration-api",
     "name": "Integration API",
-    "description": "Internal link: tutorial.api.seedaps.com",
+    "description": "Integration API status",
     "cron": "* * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
@@ -1147,7 +1148,6 @@
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
-    "external_url": "https://tutorial.api.seedaps.com",
     "type_data": {
       "url": "https://tutorial.api.seedaps.com/",
       "method": "GET",
@@ -1156,6 +1156,7 @@
       "timeout": 30000,
       "eval": "(async function (statusCode, responseTime, responseRaw, modules) {\n    if (statusCode !== 200) {\n        return { status: 'DOWN', latency: responseTime };\n    }\n    // Same wildcard trap as the tenants (F-052): every hostname under\n    // seedaps.com answers 200, including ones that were never configured, and\n    // an unconfigured one renders \"empresa inexistente\". Measured against an\n    // invented *.api.seedaps.com control, which showed it.\n    if (responseRaw.indexOf('inexistente') !== -1) {\n        return { status: 'DOWN', latency: responseTime };\n    }\n    return { status: 'UP', latency: responseTime };\n})",
       "allowSelfSignedCert": false
-    }
+    },
+    "external_url": null
   }
 ]
