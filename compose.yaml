@@ -1,0 +1,113 @@
+# Kener — status page for seed-vm-services-eastus.
+#
+# Published at https://status.seedaps.com through the Cloudflare Tunnel while it
+# runs in parallel with Gatus, and on the Azure VNet at http://172.17.0.4:3002.
+# At cutover this moves to port 3001 and https://uptime.seedaps.com, inheriting
+# the tunnel ingress rule and the netsh portproxy forwarder Gatus uses today.
+#
+# Kener has NO built-in whole-site authentication and no basic-auth option. The
+# status page is world-readable to anyone who can reach it, so the published
+# hostname MUST sit behind Cloudflare Access. That gate is not optional here.
+name: kener
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "50m"
+    max-file: "3"
+
+services:
+  # The application. Runs its Knex migrations in-process at startup, so there is
+  # no init container and nothing for Komodo's ignore_services to skip.
+  kener:
+    image: rajnandan1/kener:4.1.5
+    restart: unless-stopped
+
+    # NOTE: no healthcheck here on purpose. The official image already ships one
+    # hitting the plain /healthcheck. Do not point a restart-on-failure check at
+    # /healthcheck?strict=1 — restarting Kener cannot fix a dead database, and it
+    # would restart-loop for the whole outage. Use ?strict=1 for alerting only.
+
+    environment:
+      # Supplied by the Komodo stack environment from Komodo Variables, never
+      # committed here. This repository is public.
+      KENER_SECRET_KEY: ${KENER_SECRET_KEY:?missing — set it in the Komodo stack environment}
+      DATABASE_URL: postgresql://kener:${KENER_DB_PASSWORD:?missing — set it in the Komodo stack environment}@postgres:5432/kener
+
+      REDIS_URL: redis://redis:6379
+      PORT: "3000"
+
+      # Must match the URL the browser actually uses. SvelteKit rejects every
+      # form POST — including login — with "Cross-site POST form submissions are
+      # forbidden" if this is wrong. No trailing slash.
+      ORIGIN: https://status.seedaps.com
+
+    ports:
+      - "3002:3000"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+    security_opt:
+      - no-new-privileges:true
+    logging: *logging
+
+  # Dedicated PostgreSQL. Not shared with komodo-postgres-1: that is a
+  # DocumentDB-flavoured build serving FerretDB, it is the metadata store of the
+  # control plane that deploys this stack, and it is untagged on the data layer
+  # (F-020). Kener's own docs recommend PostgreSQL for production and there is no
+  # SQLite -> PostgreSQL migration path, so this is chosen up front.
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kener
+      POSTGRES_PASSWORD: ${KENER_DB_PASSWORD:?missing — set it in the Komodo stack environment}
+      POSTGRES_DB: kener
+    volumes:
+      - kener-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kener -d kener"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    security_opt:
+      - no-new-privileges:true
+    logging: *logging
+
+  # Required, not optional: Kener will not start without REDIS_URL. Backs the
+  # BullMQ queues that drive checks, alerting and email fan-out.
+  #
+  # AOF is on because upstream's own self-hosted compose overrides enable it and
+  # nothing in the docs states that Redis holds only reconstructible state.
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - kener-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    security_opt:
+      - no-new-privileges:true
+    logging: *logging
+
+# Neither postgres nor redis publishes a port. Only kener does, because
+# cloudflared runs as a systemd service on the WSL host rather than as a
+# container, so it cannot reach a Docker network by service name.
+networks:
+  default:
+    name: kener_internal
+
+volumes:
+  kener-postgres-data:
+    name: kener-postgres-data
+  kener-redis-data:
+    name: kener-redis-data
