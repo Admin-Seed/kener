@@ -64,7 +64,8 @@ def wire(monitor):
     value double-encodes it: the column then parses as a JSON *string* rather
     than an object, every field including `url` reads back empty, and axios
     fails with "Invalid URL" on every check. Measured, not theorised -- it is
-    why this function exists at all."""
+    why this function exists at all.
+    """
     out = dict(monitor)
     td = out.get("type_data")
     if isinstance(td, str):
@@ -81,6 +82,7 @@ def main():
         sys.exit("monitors.json contains duplicate tags")
 
     created = updated = failed = 0
+
     for m in monitors:
         tag = m["tag"]
         status, _ = call("GET", "/api/v4/monitors/" + tag)
@@ -107,9 +109,31 @@ def main():
             print("%-28s FAILED http %s: %s" % (tag, code, str(body)[:300]))
             failed += 1
 
-    if not DRY:
-        print("\n%d created, %d updated, %d failed, %d total"
-              % (created, updated, failed, len(monitors)))
+    if DRY:
+        print("\nwould assign %d monitors to the home page" % len(tags))
+        return 0
+
+    print("\n%d created, %d updated, %d failed, %d total"
+          % (created, updated, failed, len(monitors)))
+
+    # A monitor is INVISIBLE on the status page until it is assigned to a page.
+    # Creating it is not enough: skip this and the board renders empty while
+    # every monitor is happily checking in the background. That is exactly what
+    # happened on the first run here, and it is why this step is in the script
+    # rather than in a "remember to also..." note.
+    #
+    # The home page is addressed as `~home` -- its stored path is empty and its
+    # public URL is the site root. `monitors` is a plain array of tags, and it
+    # REPLACES the assignment rather than adding to it, so monitors.json decides
+    # what is on the board and in what order.
+    code, body = call("PATCH", "/api/v4/pages/~home", {"monitors": tags})
+    if code in (200, 204):
+        print("assigned %d monitors to the home page" % len(tags))
+    else:
+        print("FAILED to assign monitors to the home page: http %s: %s"
+              % (code, str(body)[:300]))
+        failed += 1
+
     return 1 if failed else 0
 
 

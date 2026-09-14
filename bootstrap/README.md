@@ -35,9 +35,16 @@ from the instance — delete those in the UI, deliberately, because
 `DELETE /api/v4/monitors/{tag}` also destroys that monitor's entire history,
 its incident and maintenance links, and its alert configuration.
 
-It does **not** assign monitors to a status page. That is a separate concern
-(`/api/v4/pages`), and in Kener a monitor is invisible on a page until it is
-added to one. Do that once in the UI after the first run.
+It **does** assign every monitor to the home page, as a final step. This is not
+optional housekeeping: in Kener a monitor is invisible on a page until it is
+added to one, so creating 46 monitors and stopping there leaves a board that
+renders empty while every check runs happily in the background. That happened on
+the first run here, which is why the step lives in the script rather than in a
+note somebody has to remember.
+
+The assignment **replaces** rather than appends, so `monitors.json` decides what
+is on the board and in what order. A monitor you want checked but not shown
+should stay in `monitors.json` with `"is_hidden": "YES"`, not be dropped from it.
 
 ## Shape notes
 
