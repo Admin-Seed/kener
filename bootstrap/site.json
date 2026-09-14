@@ -1,0 +1,95 @@
+{
+  "categories": [
+    {
+      "name": "seed",
+      "description": "Seed APS tenants on the shared multi-tenant application.",
+      "isHidden": false
+    },
+    {
+      "name": "coortex",
+      "description": "Coortex production environments.",
+      "isHidden": false
+    },
+    {
+      "name": "coortex dev",
+      "description": "Coortex development environments.",
+      "isHidden": false
+    },
+    {
+      "name": "internal",
+      "description": "Applications this host runs and publishes.",
+      "isHidden": false
+    },
+    {
+      "name": "infrastructure",
+      "description": "Shared certificates and the database gateway.",
+      "isHidden": false
+    }
+  ],
+
+  "siteName": "Seed APS",
+  "title": "Seed APS — Status",
+
+  "logo": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/logo-white.png",
+  "favicon": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/favicon-32.png",
+
+  "hero": {
+    "title": "Seed APS — Service Status",
+    "subtitle": "Live availability of customer environments and shared infrastructure."
+  },
+
+  "kenerTheme": "dark",
+  "themeToggle": "NO",
+
+  "colors": {
+    "UP": "#67ab95",
+    "DOWN": "#ca3038",
+    "DEGRADED": "#e6ca61",
+    "MAINTENANCE": "#6679cc",
+    "ACCENT": "#e2eaf3",
+    "ACCENT_FOREGROUND": "#0b5ecb"
+  },
+  "colorsDark": {
+    "UP": "#67ab95",
+    "DOWN": "#ca3038",
+    "DEGRADED": "#e6ca61",
+    "MAINTENANCE": "#6679cc",
+    "ACCENT": "#22334f",
+    "ACCENT_FOREGROUND": "#2a8ff4"
+  },
+
+  "nav": [
+    {
+      "name": "Login",
+      "url": "/account/signin",
+      "iconURL": ""
+    }
+  ],
+
+  "metaTags": [
+    {
+      "key": "description",
+      "value": "Live availability of Seed APS customer environments and shared infrastructure."
+    },
+    {
+      "key": "robots",
+      "value": "noindex, nofollow"
+    },
+    {
+      "key": "og:title",
+      "value": "Seed APS — Status"
+    },
+    {
+      "key": "og:description",
+      "value": "Live availability of Seed APS customer environments and shared infrastructure."
+    },
+    {
+      "key": "og:type",
+      "value": "website"
+    },
+    {
+      "key": "og:site_name",
+      "value": "Seed APS"
+    }
+  ]
+}
