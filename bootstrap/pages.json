@@ -12,8 +12,8 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 7,
-        "mobile": 7
+        "desktop": 90,
+        "mobile": 30
       },
       "monitor_layout_style": "default-grid"
     }
@@ -26,8 +26,8 @@
     "from_category": "seed",
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 7,
-        "mobile": 7
+        "desktop": 90,
+        "mobile": 30
       },
       "monitor_layout_style": "default-list"
     }
@@ -40,8 +40,8 @@
     "from_category": "coortex",
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 7,
-        "mobile": 7
+        "desktop": 90,
+        "mobile": 30
       },
       "monitor_layout_style": "default-list"
     }
@@ -54,8 +54,8 @@
     "from_category": "coortex dev",
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 7,
-        "mobile": 7
+        "desktop": 90,
+        "mobile": 30
       },
       "monitor_layout_style": "default-list"
     }
@@ -68,8 +68,8 @@
     "from_category": "internal",
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 7,
-        "mobile": 7
+        "desktop": 90,
+        "mobile": 30
       },
       "monitor_layout_style": "default-list"
     }
@@ -82,8 +82,8 @@
     "from_category": "infrastructure",
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 7,
-        "mobile": 7
+        "desktop": 90,
+        "mobile": 30
       },
       "monitor_layout_style": "default-list"
     }
