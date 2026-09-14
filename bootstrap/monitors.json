@@ -940,7 +940,7 @@
   },
   {
     "tag": "infra-azure-sql",
-    "name": "Infrastructure - Database Gateway",
+    "name": "Database Gateway",
     "description": "Database gateway status",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -954,6 +954,208 @@
       "port": "1433",
       "degradedRemainingHours": "168",
       "downRemainingHours": "24"
+    }
+  },
+  {
+    "tag": "home-seed",
+    "name": "Seed APS",
+    "description": "Seed APS environment status",
+    "cron": "* * * * *",
+    "default_status": "UP",
+    "status": "ACTIVE",
+    "category_name": "overview",
+    "monitor_type": "GROUP",
+    "include_degraded_in_downtime": "NO",
+    "is_hidden": "NO",
+    "external_url": "https://tutorial.seedaps.com",
+    "type_data": {
+      "monitors": [
+        {
+          "tag": "seed-bblend",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-chromo",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-cpack",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-csnpr",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-csnupv",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-erbs",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-etical",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-focus-f4",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-focus-sp",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-focussul",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-grano",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-imply",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-inplavel",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-isacteep",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-kingspan-anapolis",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-kingspan-araquari",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-kingspan-cambui",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-kingspan-leme",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-kingspan-varzeagrande",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-kingspan-vitoriadesantoantao",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-liner",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-linkplas",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-liotecnica",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-medal",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-nokianpanimo",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-prada",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-pradaembalagens",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-sintex",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-sintex-producao",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-supley",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-taf",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-teste-cpack",
+          "weight": 0.030303
+        },
+        {
+          "tag": "seed-vale-dipe",
+          "weight": 0.030303
+        }
+      ],
+      "latencyCalculation": "AVG"
+    }
+  },
+  {
+    "tag": "home-coortex",
+    "name": "Coortex APS",
+    "description": "Coortex environment status",
+    "cron": "* * * * *",
+    "default_status": "UP",
+    "status": "ACTIVE",
+    "category_name": "overview",
+    "monitor_type": "GROUP",
+    "include_degraded_in_downtime": "NO",
+    "is_hidden": "NO",
+    "external_url": "https://tutorial-mesas.coortex.com",
+    "type_data": {
+      "monitors": [
+        {
+          "tag": "coortex-csnupv",
+          "weight": 0.333333
+        },
+        {
+          "tag": "coortex-tutorial-mesas",
+          "weight": 0.333333
+        },
+        {
+          "tag": "coortex-planejamento-csn",
+          "weight": 0.333333
+        }
+      ],
+      "latencyCalculation": "AVG"
+    }
+  },
+  {
+    "tag": "home-integration-api",
+    "name": "Integration API",
+    "description": "Integration API status",
+    "cron": "* * * * *",
+    "default_status": "UP",
+    "status": "ACTIVE",
+    "category_name": "overview",
+    "monitor_type": "API",
+    "include_degraded_in_downtime": "NO",
+    "is_hidden": "NO",
+    "external_url": "https://tutorial.api.seedaps.com",
+    "type_data": {
+      "url": "https://tutorial.api.seedaps.com/",
+      "method": "GET",
+      "headers": [],
+      "body": "",
+      "timeout": 30000,
+      "eval": "(async function (statusCode, responseTime, responseRaw, modules) {\n    if (statusCode !== 200) {\n        return { status: 'DOWN', latency: responseTime };\n    }\n    // Same wildcard trap as the tenants (F-052): every hostname under\n    // seedaps.com answers 200, including ones that were never configured, and\n    // an unconfigured one renders \"empresa inexistente\". Measured against an\n    // invented *.api.seedaps.com control, which showed it.\n    if (responseRaw.indexOf('inexistente') !== -1) {\n        return { status: 'DOWN', latency: responseTime };\n    }\n    return { status: 'UP', latency: responseTime };\n})",
+      "allowSelfSignedCert": false
     }
   }
 ]

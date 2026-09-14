@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Apply monitors.json and site.json to a Kener instance through the v4 REST API.
+"""Apply monitors.json, site.json and pages.json to a Kener instance.
 
 Kener v4 has no file-based configuration and no import endpoint: monitors,
-categories and every branding value live only as rows in the database. This
-script is how that configuration stays reviewable, diffable and rebuildable from
-git anyway -- the two JSON files are the source of truth, and running this makes
-the instance match them.
+pages, categories and every branding value live only as rows in the database.
+This script is how that configuration stays reviewable, diffable and rebuildable
+from git anyway -- the three JSON files are the source of truth, and running
+this makes the instance match them.
 
-Idempotent: a monitor whose `tag` already exists is PATCHed, otherwise POSTed,
-and each site key is PATCHed in place. Nothing is ever deleted.
+Idempotent: monitors and pages are PATCHed if they exist and POSTed if they do
+not, and each site key is PATCHed in place. Nothing is ever deleted.
 
 Usage:
     export KENER_URL=https://uptime.seedaps.com     # or http://localhost:3001
@@ -67,8 +67,7 @@ def wire(monitor):
     The API stringifies it itself before storing. Sending an already-stringified
     value double-encodes it: the column then parses as a JSON *string* rather
     than an object, every field including `url` reads back empty, and axios
-    fails with "Invalid URL" on every check. Measured, not theorised -- it is
-    why this function exists at all.
+    fails with "Invalid URL" on every check. Measured, not theorised.
     """
     out = dict(monitor)
     td = out.get("type_data")
@@ -77,19 +76,15 @@ def wire(monitor):
     return out
 
 
+def load(path):
+    with open(path, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
 def apply_site():
-    """Push every key in site.json.
-
-    `categories` is the one that matters most: a monitor's `category_name` only
-    becomes a heading on the board if a category of that name is declared here.
-    Set the monitors without the categories and they all pile into one flat
-    list, which is what happened before this file existed.
-    """
-    with open(SITE, encoding="utf-8") as fh:
-        site = json.load(fh)
-
+    """Push every key in site.json."""
     failed = 0
-    for key, value in site.items():
+    for key, value in load(SITE).items():
         if DRY:
             print("%-16s would set" % key)
             continue
@@ -103,15 +98,12 @@ def apply_site():
 
 
 def apply_monitors():
-    with open(MONITORS, encoding="utf-8") as fh:
-        monitors = json.load(fh)
-
+    monitors = load(MONITORS)
     tags = [m["tag"] for m in monitors]
     if len(tags) != len(set(tags)):
         sys.exit("monitors.json contains duplicate tags")
 
     created = updated = failed = 0
-
     for m in monitors:
         tag = m["tag"]
         status, _ = call("GET", "/api/v4/monitors/" + tag)
@@ -138,63 +130,54 @@ def apply_monitors():
             print("%-28s FAILED http %s: %s" % (tag, code, str(body)[:300]))
             failed += 1
 
-    if DRY:
-        print("\nwould assign %d monitors to the home page" % len(tags))
-        return failed
-
-    print("\n%d created, %d updated, %d failed, %d total"
-          % (created, updated, failed, len(monitors)))
-
-    # A monitor is INVISIBLE on the status page until it is assigned to a page.
-    # Creating it is not enough: skip this and the board renders empty while
-    # every monitor is happily checking in the background. That is exactly what
-    # happened on the first run here, and it is why this step is in the script
-    # rather than in a "remember to also..." note.
-    #
-    # The home page is addressed as `~home` -- its stored path is empty and its
-    # public URL is the site root. `monitors` is a plain array of tags, and it
-    # REPLACES the assignment rather than adding to it, so monitors.json decides
-    # what is on the board and in what order.
-    code, body = call("PATCH", "/api/v4/pages/~home", {"monitors": tags})
-    if code in (200, 204):
-        print("assigned %d monitors to the home page" % len(tags))
-    else:
-        print("FAILED to assign monitors to the home page: http %s: %s"
-              % (code, str(body)[:300]))
-        failed += 1
-
+    if not DRY:
+        print("\n%d created, %d updated, %d failed, %d total"
+              % (created, updated, failed, len(monitors)))
     return failed
 
 
 def apply_pages():
-    """Create or update one status page per group.
+    """Create or update every status page, including the home page.
 
-    This is how the Gatus groups are reproduced. Kener v4 does **not** group
-    monitors by category on a page -- `category_name` is set on every monitor
-    and the `categories` site key is populated, but neither reaches the rendered
-    page; they are v3 leftovers. Groups in v4 are separate pages, linked from
-    the nav.
+    A monitor is INVISIBLE until it is assigned to a page, so this is not
+    optional tidying -- skip it and monitors check happily behind a board that
+    shows nothing.
 
-    Membership is derived from `category_name` in monitors.json rather than
-    listed here, so a new tenant lands on the right page by virtue of its
-    category and the two files cannot drift apart.
+    Membership comes from either `from_category` (derived from monitors.json, so
+    a new tenant lands on the right page automatically) or an explicit `tags`
+    list where order matters, as it does on the home page. Either way the
+    assignment REPLACES rather than appends, so these files decide what is on
+    each board.
+
+    This is also how the Gatus groups are reproduced: Kener v4 does not group by
+    category on a page -- `category_name` never reaches the rendered page -- so
+    a group is a page.
     """
-    with open(PAGES, encoding="utf-8") as fh:
-        pages = json.load(fh)
-    with open(MONITORS, encoding="utf-8") as fh:
-        monitors = json.load(fh)
+    pages = load(PAGES)
+    monitors = load(MONITORS)
+    known = set(m["tag"] for m in monitors)
 
     failed = 0
     for pg in pages:
-        tags = [m["tag"] for m in monitors
-                if m["category_name"] == pg["from_category"]]
-        if not tags:
-            print("%-16s SKIPPED - no monitors in category %r"
-                  % (pg["page_path"], pg["from_category"]))
-            failed += 1
-            continue
+        if "tags" in pg:
+            tags = list(pg["tags"])
+            unknown = [t for t in tags if t not in known]
+            if unknown:
+                print("%-16s FAILED - not in monitors.json: %s"
+                      % (pg["page_path"], ", ".join(unknown)))
+                failed += 1
+                continue
+        else:
+            tags = [m["tag"] for m in monitors
+                    if m["category_name"] == pg["from_category"]]
+            if not tags:
+                print("%-16s SKIPPED - no monitors in category %r"
+                      % (pg["page_path"], pg["from_category"]))
+                failed += 1
+                continue
 
-        body = dict((k, v) for k, v in pg.items() if k != "from_category")
+        body = dict((k, v) for k, v in pg.items()
+                    if k not in ("from_category", "tags"))
         body["monitors"] = tags
 
         if DRY:
@@ -228,7 +211,7 @@ def main():
         print("--- monitors ---")
         failed += apply_monitors()
         print()
-        print("--- group pages ---")
+        print("--- pages ---")
         failed += apply_pages()
     return 1 if failed else 0
 

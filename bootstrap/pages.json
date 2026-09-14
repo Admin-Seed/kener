@@ -1,5 +1,17 @@
 [
   {
+    "page_path": "~home",
+    "page_title": "Home",
+    "page_header": "Seed APS — Service Status",
+    "page_subheader": "Availability of Seed APS services.",
+    "tags": [
+      "home-seed",
+      "home-coortex",
+      "home-integration-api",
+      "infra-azure-sql"
+    ]
+  },
+  {
     "page_path": "seed",
     "page_title": "Seed",
     "page_header": "Seed APS environments",
