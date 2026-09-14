@@ -40,7 +40,13 @@ services:
       # Must match the URL the browser actually uses. SvelteKit rejects every
       # form POST — including login — with "Cross-site POST form submissions are
       # forbidden" if this is wrong. No trailing slash.
-      ORIGIN: https://status.seedaps.com
+      #
+      # Set to loopback while the stack is unpublished: until Cloudflare Access
+      # is in front of a hostname, the only way in is http://localhost:3002 from
+      # the VM itself. This becomes https://status.seedaps.com when the tunnel
+      # ingress rule is added, and https://uptime.seedaps.com at cutover. It has
+      # to be changed in step with the ingress, never before it.
+      ORIGIN: http://localhost:3002
 
     ports:
       - "3002:3000"
