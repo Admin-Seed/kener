@@ -9,41 +9,83 @@
       "home-coortex",
       "home-integration-api",
       "infra-azure-sql"
-    ]
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 7,
+        "mobile": 7
+      },
+      "monitor_layout_style": "default-grid"
+    }
   },
   {
     "page_path": "seed",
     "page_title": "Seed",
     "page_header": "Seed APS environments",
     "page_subheader": "Availability of Seed APS customer environments.",
-    "from_category": "seed"
+    "from_category": "seed",
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 7,
+        "mobile": 7
+      },
+      "monitor_layout_style": "default-list"
+    }
   },
   {
     "page_path": "coortex",
     "page_title": "Coortex",
     "page_header": "Coortex environments",
     "page_subheader": "Availability of Coortex production environments.",
-    "from_category": "coortex"
+    "from_category": "coortex",
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 7,
+        "mobile": 7
+      },
+      "monitor_layout_style": "default-list"
+    }
   },
   {
     "page_path": "coortex-dev",
     "page_title": "Coortex Dev",
     "page_header": "Coortex development environments",
     "page_subheader": "Availability of Coortex development environments.",
-    "from_category": "coortex dev"
+    "from_category": "coortex dev",
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 7,
+        "mobile": 7
+      },
+      "monitor_layout_style": "default-list"
+    }
   },
   {
     "page_path": "internal",
     "page_title": "Internal",
     "page_header": "Internal services",
     "page_subheader": "Availability of internal services.",
-    "from_category": "internal"
+    "from_category": "internal",
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 7,
+        "mobile": 7
+      },
+      "monitor_layout_style": "default-list"
+    }
   },
   {
     "page_path": "infrastructure",
     "page_title": "Infrastructure",
     "page_header": "Shared infrastructure",
     "page_subheader": "Shared certificates and database connectivity.",
-    "from_category": "infrastructure"
+    "from_category": "infrastructure",
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 7,
+        "mobile": 7
+      },
+      "monitor_layout_style": "default-list"
+    }
   }
 ]
