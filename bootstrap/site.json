@@ -1,32 +1,4 @@
 {
-  "categories": [
-    {
-      "name": "seed",
-      "description": "Seed APS tenants on the shared multi-tenant application.",
-      "isHidden": false
-    },
-    {
-      "name": "coortex",
-      "description": "Coortex production environments.",
-      "isHidden": false
-    },
-    {
-      "name": "coortex dev",
-      "description": "Coortex development environments.",
-      "isHidden": false
-    },
-    {
-      "name": "internal",
-      "description": "Applications this host runs and publishes.",
-      "isHidden": false
-    },
-    {
-      "name": "infrastructure",
-      "description": "Shared certificates and the database gateway.",
-      "isHidden": false
-    }
-  ],
-
   "siteName": "Seed APS",
   "title": "Seed APS — Status",
 
@@ -59,11 +31,13 @@
   },
 
   "nav": [
-    {
-      "name": "Login",
-      "url": "/account/signin",
-      "iconURL": ""
-    }
+    { "name": "All", "url": "/", "iconURL": "" },
+    { "name": "Seed tenants", "url": "/seed", "iconURL": "" },
+    { "name": "Coortex", "url": "/coortex", "iconURL": "" },
+    { "name": "Coortex dev", "url": "/coortex-dev", "iconURL": "" },
+    { "name": "Internal", "url": "/internal", "iconURL": "" },
+    { "name": "Infrastructure", "url": "/infrastructure", "iconURL": "" },
+    { "name": "Login", "url": "/account/signin", "iconURL": "" }
   ],
 
   "metaTags": [
@@ -90,6 +64,34 @@
     {
       "key": "og:site_name",
       "value": "Seed APS"
+    }
+  ],
+
+  "categories": [
+    {
+      "name": "seed",
+      "description": "Seed APS tenants on the shared multi-tenant application.",
+      "isHidden": false
+    },
+    {
+      "name": "coortex",
+      "description": "Coortex production environments.",
+      "isHidden": false
+    },
+    {
+      "name": "coortex dev",
+      "description": "Coortex development environments.",
+      "isHidden": false
+    },
+    {
+      "name": "internal",
+      "description": "Applications this host runs and publishes.",
+      "isHidden": false
+    },
+    {
+      "name": "infrastructure",
+      "description": "Shared certificates and the database gateway.",
+      "isHidden": false
     }
   ]
 }

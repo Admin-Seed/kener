@@ -27,6 +27,7 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 MONITORS = os.path.join(HERE, "monitors.json")
 SITE = os.path.join(HERE, "site.json")
+PAGES = os.path.join(HERE, "pages.json")
 
 BASE = os.environ.get("KENER_URL", "").rstrip("/")
 KEY = os.environ.get("KENER_API_KEY", "")
@@ -165,6 +166,58 @@ def apply_monitors():
     return failed
 
 
+def apply_pages():
+    """Create or update one status page per group.
+
+    This is how the Gatus groups are reproduced. Kener v4 does **not** group
+    monitors by category on a page -- `category_name` is set on every monitor
+    and the `categories` site key is populated, but neither reaches the rendered
+    page; they are v3 leftovers. Groups in v4 are separate pages, linked from
+    the nav.
+
+    Membership is derived from `category_name` in monitors.json rather than
+    listed here, so a new tenant lands on the right page by virtue of its
+    category and the two files cannot drift apart.
+    """
+    with open(PAGES, encoding="utf-8") as fh:
+        pages = json.load(fh)
+    with open(MONITORS, encoding="utf-8") as fh:
+        monitors = json.load(fh)
+
+    failed = 0
+    for pg in pages:
+        tags = [m["tag"] for m in monitors
+                if m["category_name"] == pg["from_category"]]
+        if not tags:
+            print("%-16s SKIPPED - no monitors in category %r"
+                  % (pg["page_path"], pg["from_category"]))
+            failed += 1
+            continue
+
+        body = dict((k, v) for k, v in pg.items() if k != "from_category")
+        body["monitors"] = tags
+
+        if DRY:
+            print("%-16s would hold %d monitors" % (pg["page_path"], len(tags)))
+            continue
+
+        code, _ = call("GET", "/api/v4/pages/" + pg["page_path"])
+        if code == 200:
+            code, resp = call("PATCH", "/api/v4/pages/" + pg["page_path"], body)
+            verb, okcodes = "updated", (200, 204)
+        else:
+            code, resp = call("POST", "/api/v4/pages", body)
+            verb, okcodes = "created", (200, 201)
+
+        if code in okcodes:
+            print("%-16s %-8s %d monitors" % (pg["page_path"], verb, len(tags)))
+        else:
+            print("%-16s FAILED http %s: %s"
+                  % (pg["page_path"], code, str(resp)[:200]))
+            failed += 1
+    return failed
+
+
 def main():
     failed = 0
     if not MONITORS_ONLY:
@@ -174,6 +227,9 @@ def main():
     if not SITE_ONLY:
         print("--- monitors ---")
         failed += apply_monitors()
+        print()
+        print("--- group pages ---")
+        failed += apply_pages()
     return 1 if failed else 0
 
 

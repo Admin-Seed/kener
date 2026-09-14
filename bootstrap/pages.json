@@ -1,0 +1,37 @@
+[
+  {
+    "page_path": "seed",
+    "page_title": "Seed tenants",
+    "page_header": "Seed APS tenants",
+    "page_subheader": "Customer environments on the shared multi-tenant application.",
+    "from_category": "seed"
+  },
+  {
+    "page_path": "coortex",
+    "page_title": "Coortex",
+    "page_header": "Coortex",
+    "page_subheader": "Coortex production environments.",
+    "from_category": "coortex"
+  },
+  {
+    "page_path": "coortex-dev",
+    "page_title": "Coortex dev",
+    "page_header": "Coortex development",
+    "page_subheader": "Coortex development environments.",
+    "from_category": "coortex dev"
+  },
+  {
+    "page_path": "internal",
+    "page_title": "Internal",
+    "page_header": "Internal services",
+    "page_subheader": "Applications this host runs and publishes.",
+    "from_category": "internal"
+  },
+  {
+    "page_path": "infrastructure",
+    "page_title": "Infrastructure",
+    "page_header": "Shared infrastructure",
+    "page_subheader": "Wildcard certificates and the Azure SQL gateway.",
+    "from_category": "infrastructure"
+  }
+]
