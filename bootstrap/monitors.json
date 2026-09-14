@@ -941,7 +941,7 @@
   {
     "tag": "infra-azure-sql",
     "name": "Database Gateway",
-    "description": "Database gateway status",
+    "description": "",
     "cron": "*/5 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
@@ -959,7 +959,7 @@
   {
     "tag": "home-seed",
     "name": "Seed APS",
-    "description": "Seed APS environment status",
+    "description": "Internal link: tutorial.seedaps.com",
     "cron": "* * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
@@ -1109,7 +1109,7 @@
   {
     "tag": "home-coortex",
     "name": "Coortex APS",
-    "description": "Coortex environment status",
+    "description": "Internal link: tutorial-mesas.coortex.com",
     "cron": "* * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
@@ -1139,7 +1139,7 @@
   {
     "tag": "home-integration-api",
     "name": "Integration API",
-    "description": "Integration API status",
+    "description": "Internal link: tutorial.api.seedaps.com",
     "cron": "* * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
