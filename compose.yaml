@@ -1,13 +1,16 @@
 # Kener — status page for seed-vm-services-eastus.
 #
-# Published at https://status.seedaps.com through the Cloudflare Tunnel while it
-# runs in parallel with Gatus, and on the Azure VNet at http://172.17.0.4:3002.
-# At cutover this moves to port 3001 and https://uptime.seedaps.com, inheriting
-# the tunnel ingress rule and the netsh portproxy forwarder Gatus uses today.
+# Published at https://uptime.seedaps.com through the Cloudflare Tunnel, and on
+# the Azure VNet at http://172.17.0.4:3001. It took both over from Gatus on
+# 2026-09-14 by binding the same host port, so neither the tunnel ingress rule
+# nor the netsh portproxy forwarder needed changing.
 #
-# Kener has NO built-in whole-site authentication and no basic-auth option. The
-# status page is world-readable to anyone who can reach it, so the published
-# hostname MUST sit behind Cloudflare Access. That gate is not optional here.
+# Kener has NO whole-site authentication and no basic-auth option: the admin UI
+# and the API are gated, the status page is not. This board is therefore
+# PUBLICLY READABLE - all 46 monitors, their hostnames and their history - which
+# is a deliberate, accepted decision (ADR-0010), not an oversight. Gatus, which
+# it replaced, was behind basic auth. Putting Cloudflare Access in front of the
+# hostname is how that would be undone.
 name: kener
 
 x-logging: &logging
@@ -40,16 +43,13 @@ services:
       # Must match the URL the browser actually uses. SvelteKit rejects every
       # form POST — including login — with "Cross-site POST form submissions are
       # forbidden" if this is wrong. No trailing slash.
-      #
-      # Set to loopback while the stack is unpublished: until Cloudflare Access
-      # is in front of a hostname, the only way in is http://localhost:3002 from
-      # the VM itself. This becomes https://status.seedaps.com when the tunnel
-      # ingress rule is added, and https://uptime.seedaps.com at cutover. It has
-      # to be changed in step with the ingress, never before it.
-      ORIGIN: http://localhost:3002
+      ORIGIN: https://uptime.seedaps.com
 
     ports:
-      - "3002:3000"
+      # 3001 is inherited from Gatus, deliberately: the Cloudflare Tunnel ingress
+      # rule for uptime.seedaps.com and the netsh portproxy forwarder both
+      # already point here, so the cutover needed no change to either.
+      - "3001:3000"
 
     depends_on:
       postgres:
