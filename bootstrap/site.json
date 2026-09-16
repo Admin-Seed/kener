@@ -1,13 +1,13 @@
 {
   "siteName": "Seed APS",
   "title": "Seed APS — Status",
-  "logo": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/logo-white.png",
+  "logo": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/logo-black.png",
   "favicon": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/favicon-32.png",
   "hero": {
     "title": "Seed APS — Status dos Serviços",
     "subtitle": "Disponibilidade dos ambientes de clientes e da infraestrutura compartilhada."
   },
-  "kenerTheme": "dark",
+  "kenerTheme": "light",
   "themeToggle": "NO",
   "colors": {
     "UP": "#67ab95",
@@ -90,6 +90,16 @@
       "isHidden": false
     },
     {
+      "name": "CSN-PR",
+      "description": "Ambientes CSN-PR.",
+      "isHidden": false
+    },
+    {
+      "name": "CSN-UPV",
+      "description": "Ambientes CSN-UPV.",
+      "isHidden": false
+    },
+    {
       "name": "Erbs",
       "description": "Ambientes Erbs.",
       "isHidden": false
@@ -167,6 +177,11 @@
     {
       "name": "overview",
       "description": "Ambientes overview.",
+      "isHidden": false
+    },
+    {
+      "name": "Prada",
+      "description": "Ambientes Prada.",
       "isHidden": false
     },
     {
@@ -342,5 +357,6 @@
         "disabled": false
       }
     ]
-  }
+  },
+  "theme": "light"
 }

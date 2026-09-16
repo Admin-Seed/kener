@@ -53,6 +53,23 @@
     }
   },
   {
+    "page_path": "coortex",
+    "page_title": "Coortex",
+    "page_header": "Coortex",
+    "page_subheader": "Disponibilidade dos ambientes Coortex.",
+    "from_category": "Coortex",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-grid"
+    }
+  },
+  {
     "page_path": "cpack",
     "page_title": "CPack",
     "page_header": "CPack",
@@ -70,12 +87,33 @@
     }
   },
   {
-    "page_path": "csn",
-    "page_title": "CSN",
-    "page_header": "CSN",
-    "page_subheader": "Disponibilidade dos serviços de CSN.",
-    "from_category": "CSN",
+    "page_path": "csn-pr",
+    "page_title": "CSN-PR",
+    "page_header": "CSN-PR",
+    "page_subheader": "Disponibilidade dos serviços de CSN-PR.",
+    "from_category": "CSN-PR",
     "include_tags": [
+      "coortex-planejamento-csn",
+      "coortex-dev-planejamento-csn",
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-grid"
+    }
+  },
+  {
+    "page_path": "csn-upv",
+    "page_title": "CSN-UPV",
+    "page_header": "CSN-UPV",
+    "page_subheader": "Disponibilidade dos serviços de CSN-UPV.",
+    "from_category": "CSN-UPV",
+    "include_tags": [
+      "coortex-planejamento-csn",
+      "coortex-dev-planejamento-csn",
       "infra-azure-sql"
     ],
     "page_settings": {
@@ -172,6 +210,20 @@
     }
   },
   {
+    "page_path": "infrastructure",
+    "page_title": "Infrastructure",
+    "page_header": "Infraestrutura compartilhada",
+    "page_subheader": "Certificados compartilhados e conectividade de banco de dados.",
+    "from_category": "infrastructure",
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-grid"
+    }
+  },
+  {
     "page_path": "inplavel",
     "page_title": "Inplavel",
     "page_header": "Inplavel",
@@ -180,6 +232,20 @@
     "include_tags": [
       "infra-azure-sql"
     ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-grid"
+    }
+  },
+  {
+    "page_path": "internal",
+    "page_title": "Internal",
+    "page_header": "Serviços internos",
+    "page_subheader": "Disponibilidade dos serviços internos.",
+    "from_category": "internal",
     "page_settings": {
       "monitor_status_history_days": {
         "desktop": 90,
@@ -308,6 +374,23 @@
     }
   },
   {
+    "page_path": "prada",
+    "page_title": "Prada",
+    "page_header": "Prada",
+    "page_subheader": "Disponibilidade dos serviços de Prada.",
+    "from_category": "Prada",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-grid"
+    }
+  },
+  {
     "page_path": "sintex",
     "page_title": "Sintex",
     "page_header": "Sintex",
@@ -367,51 +450,6 @@
     "include_tags": [
       "infra-azure-sql"
     ],
-    "page_settings": {
-      "monitor_status_history_days": {
-        "desktop": 90,
-        "mobile": 30
-      },
-      "monitor_layout_style": "default-grid"
-    }
-  },
-  {
-    "page_path": "coortex",
-    "page_title": "Coortex",
-    "page_header": "Coortex",
-    "page_subheader": "Disponibilidade dos ambientes Coortex.",
-    "from_category": "Coortex",
-    "include_tags": [
-      "infra-azure-sql"
-    ],
-    "page_settings": {
-      "monitor_status_history_days": {
-        "desktop": 90,
-        "mobile": 30
-      },
-      "monitor_layout_style": "default-grid"
-    }
-  },
-  {
-    "page_path": "internal",
-    "page_title": "Internal",
-    "page_header": "Serviços internos",
-    "page_subheader": "Disponibilidade dos serviços internos.",
-    "from_category": "internal",
-    "page_settings": {
-      "monitor_status_history_days": {
-        "desktop": 90,
-        "mobile": 30
-      },
-      "monitor_layout_style": "default-grid"
-    }
-  },
-  {
-    "page_path": "infrastructure",
-    "page_title": "Infrastructure",
-    "page_header": "Infraestrutura compartilhada",
-    "page_subheader": "Certificados compartilhados e conectividade de banco de dados.",
-    "from_category": "infrastructure",
     "page_settings": {
       "monitor_status_history_days": {
         "desktop": 90,

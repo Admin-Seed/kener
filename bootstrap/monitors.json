@@ -1,7 +1,7 @@
 [
   {
     "tag": "seed-bblend",
-    "name": "[Seed APS] BBlend - Ambiente de Produção",
+    "name": "BBlend - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -22,7 +22,7 @@
   },
   {
     "tag": "seed-bblend-api",
-    "name": "[Seed APS] BBlend - API de Integração",
+    "name": "BBlend - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -43,7 +43,7 @@
   },
   {
     "tag": "seed-chromo",
-    "name": "[Seed APS] Chromo - Ambiente de Produção",
+    "name": "Chromo - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -64,7 +64,7 @@
   },
   {
     "tag": "seed-chromo-api",
-    "name": "[Seed APS] Chromo - API de Integração",
+    "name": "Chromo - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -85,7 +85,7 @@
   },
   {
     "tag": "seed-cpack",
-    "name": "[Seed APS] CPack - Ambiente de Produção",
+    "name": "CPack - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -106,7 +106,7 @@
   },
   {
     "tag": "seed-teste-cpack",
-    "name": "[Seed APS] CPack Planejamento (teste) - Ambiente de Produção",
+    "name": "CPack Planejamento (teste) - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -127,7 +127,7 @@
   },
   {
     "tag": "seed-cpack-homolog",
-    "name": "[Seed APS] CPack - Ambiente de Homologação",
+    "name": "CPack - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -148,7 +148,7 @@
   },
   {
     "tag": "seed-cpack-api",
-    "name": "[Seed APS] CPack - API de Integração",
+    "name": "CPack - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -169,7 +169,7 @@
   },
   {
     "tag": "seed-teste-cpack-api",
-    "name": "[Seed APS] CPack Planejamento (teste) - API de Integração",
+    "name": "CPack Planejamento (teste) - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -190,12 +190,12 @@
   },
   {
     "tag": "seed-csnpr",
-    "name": "[Seed APS] CSN-PR - Ambiente de Produção",
+    "name": "CSN-PR - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-PR",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -211,12 +211,12 @@
   },
   {
     "tag": "seed-csnupv",
-    "name": "[Seed APS] CSN-UPV - Ambiente de Produção",
+    "name": "CSN-UPV - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-UPV",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -232,12 +232,12 @@
   },
   {
     "tag": "seed-prada",
-    "name": "[Seed APS] Prada - Ambiente de Produção",
+    "name": "Prada - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "Prada",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -253,12 +253,12 @@
   },
   {
     "tag": "seed-pradaembalagens",
-    "name": "[Seed APS] Prada Embalagens - Ambiente de Produção",
+    "name": "Prada Embalagens - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "Prada",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -274,12 +274,12 @@
   },
   {
     "tag": "seed-csnpr-homolog",
-    "name": "[Seed APS] CSN-PR - Ambiente de Homologação",
+    "name": "CSN-PR - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-PR",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -295,12 +295,12 @@
   },
   {
     "tag": "seed-csnupv-homolog",
-    "name": "[Seed APS] CSN-UPV - Ambiente de Homologação",
+    "name": "CSN-UPV - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-UPV",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -316,12 +316,12 @@
   },
   {
     "tag": "seed-pradahomolog",
-    "name": "[Seed APS] Prada - Ambiente de Homologação",
+    "name": "Prada - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "Prada",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -337,12 +337,12 @@
   },
   {
     "tag": "seed-pradaembalagens-homolog",
-    "name": "[Seed APS] Prada Embalagens - Ambiente de Homologação",
+    "name": "Prada Embalagens - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "Prada",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -358,12 +358,12 @@
   },
   {
     "tag": "seed-csnpr-api",
-    "name": "[Seed APS] CSN-PR - API de Integração",
+    "name": "CSN-PR - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-PR",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -379,12 +379,12 @@
   },
   {
     "tag": "seed-csnupv-api",
-    "name": "[Seed APS] CSN-UPV - API de Integração",
+    "name": "CSN-UPV - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-UPV",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -400,12 +400,12 @@
   },
   {
     "tag": "seed-prada-api",
-    "name": "[Seed APS] Prada - API de Integração",
+    "name": "Prada - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "Prada",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -421,12 +421,12 @@
   },
   {
     "tag": "seed-pradaembalagens-api",
-    "name": "[Seed APS] Prada Embalagens - API de Integração",
+    "name": "Prada Embalagens - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "Prada",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -442,12 +442,12 @@
   },
   {
     "tag": "coortex-csnupv",
-    "name": "[Coortex APS] CSN-UPV Planejamento - Ambiente de Produção",
+    "name": "CSN-UPV Planejamento - Ambiente de Produção",
     "description": "Status do ambiente Coortex APS",
     "cron": "* * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-UPV",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -463,12 +463,12 @@
   },
   {
     "tag": "coortex-dev-csnupv",
-    "name": "[Coortex APS] CSN-UPV Planejamento - Ambiente de Desenvolvimento",
+    "name": "CSN-UPV Planejamento - Ambiente de Desenvolvimento",
     "description": "Status do ambiente Coortex APS",
     "cron": "*/5 * * * *",
     "default_status": "UP",
     "status": "ACTIVE",
-    "category_name": "CSN",
+    "category_name": "CSN-UPV",
     "monitor_type": "API",
     "include_degraded_in_downtime": "NO",
     "is_hidden": "NO",
@@ -484,7 +484,7 @@
   },
   {
     "tag": "coortex-planejamento-csn",
-    "name": "[Coortex APS] CSN Planejamento - Ambiente de Produção",
+    "name": "CSN Planejamento - Ambiente de Produção",
     "description": "Status do ambiente Coortex APS",
     "cron": "* * * * *",
     "default_status": "UP",
@@ -505,7 +505,7 @@
   },
   {
     "tag": "coortex-dev-planejamento-csn",
-    "name": "[Coortex APS] CSN Planejamento - Ambiente de Desenvolvimento",
+    "name": "CSN Planejamento - Ambiente de Desenvolvimento",
     "description": "Status do ambiente Coortex APS",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -526,7 +526,7 @@
   },
   {
     "tag": "seed-erbs",
-    "name": "[Seed APS] Erbs - Ambiente de Produção",
+    "name": "Erbs - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -547,7 +547,7 @@
   },
   {
     "tag": "seed-erbs-homolog",
-    "name": "[Seed APS] Erbs - Ambiente de Homologação",
+    "name": "Erbs - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -568,7 +568,7 @@
   },
   {
     "tag": "seed-erbs-api",
-    "name": "[Seed APS] Erbs - API de Integração",
+    "name": "Erbs - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -589,7 +589,7 @@
   },
   {
     "tag": "seed-etical",
-    "name": "[Seed APS] Etical - Ambiente de Produção",
+    "name": "Etical - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -610,7 +610,7 @@
   },
   {
     "tag": "seed-etical-homolog",
-    "name": "[Seed APS] Etical - Ambiente de Homologação",
+    "name": "Etical - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -631,7 +631,7 @@
   },
   {
     "tag": "seed-etical-api",
-    "name": "[Seed APS] Etical - API de Integração",
+    "name": "Etical - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -652,7 +652,7 @@
   },
   {
     "tag": "seed-focus-f4",
-    "name": "[Seed APS] Focus F4 - Ambiente de Produção",
+    "name": "Focus F4 - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -673,7 +673,7 @@
   },
   {
     "tag": "seed-focus-sp",
-    "name": "[Seed APS] Focus SP - Ambiente de Produção",
+    "name": "Focus SP - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -694,7 +694,7 @@
   },
   {
     "tag": "seed-focussul",
-    "name": "[Seed APS] Focus Sul - Ambiente de Produção",
+    "name": "Focus Sul - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -715,7 +715,7 @@
   },
   {
     "tag": "seed-focus-homolog",
-    "name": "[Seed APS] Focus - Ambiente de Homologação",
+    "name": "Focus - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -736,7 +736,7 @@
   },
   {
     "tag": "seed-focus-f4-api",
-    "name": "[Seed APS] Focus F4 - API de Integração",
+    "name": "Focus F4 - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -757,7 +757,7 @@
   },
   {
     "tag": "seed-focus-sp-api",
-    "name": "[Seed APS] Focus SP - API de Integração",
+    "name": "Focus SP - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -778,7 +778,7 @@
   },
   {
     "tag": "seed-focussul-api",
-    "name": "[Seed APS] Focus Sul - API de Integração",
+    "name": "Focus Sul - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -799,7 +799,7 @@
   },
   {
     "tag": "seed-grano",
-    "name": "[Seed APS] Grano - Ambiente de Produção",
+    "name": "Grano - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -820,7 +820,7 @@
   },
   {
     "tag": "seed-grano-homolog",
-    "name": "[Seed APS] Grano - Ambiente de Homologação",
+    "name": "Grano - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -841,7 +841,7 @@
   },
   {
     "tag": "seed-grano-api",
-    "name": "[Seed APS] Grano - API de Integração",
+    "name": "Grano - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -862,7 +862,7 @@
   },
   {
     "tag": "seed-imply",
-    "name": "[Seed APS] Imply - Ambiente de Produção",
+    "name": "Imply - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -883,7 +883,7 @@
   },
   {
     "tag": "seed-imply-homolog",
-    "name": "[Seed APS] Imply - Ambiente de Homologação",
+    "name": "Imply - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -904,7 +904,7 @@
   },
   {
     "tag": "seed-imply-api",
-    "name": "[Seed APS] Imply - API de Integração",
+    "name": "Imply - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -925,7 +925,7 @@
   },
   {
     "tag": "seed-inplavel",
-    "name": "[Seed APS] Inplavel - Ambiente de Produção",
+    "name": "Inplavel - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -946,7 +946,7 @@
   },
   {
     "tag": "seed-inplavel-homolog",
-    "name": "[Seed APS] Inplavel - Ambiente de Homologação",
+    "name": "Inplavel - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -967,7 +967,7 @@
   },
   {
     "tag": "seed-inplavel-api",
-    "name": "[Seed APS] Inplavel - API de Integração",
+    "name": "Inplavel - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -988,7 +988,7 @@
   },
   {
     "tag": "seed-isacteep",
-    "name": "[Seed APS] Isacteep - Ambiente de Produção",
+    "name": "Isacteep - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1009,7 +1009,7 @@
   },
   {
     "tag": "seed-isacteep-homolog",
-    "name": "[Seed APS] Isacteep - Ambiente de Homologação",
+    "name": "Isacteep - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1030,7 +1030,7 @@
   },
   {
     "tag": "seed-isacteep-api",
-    "name": "[Seed APS] Isacteep - API de Integração",
+    "name": "Isacteep - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1051,7 +1051,7 @@
   },
   {
     "tag": "seed-kingspan-anapolis",
-    "name": "[Seed APS] Kingspan Anápolis - Ambiente de Produção",
+    "name": "Kingspan Anápolis - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1072,7 +1072,7 @@
   },
   {
     "tag": "seed-kingspan-araquari",
-    "name": "[Seed APS] Kingspan Araquari - Ambiente de Produção",
+    "name": "Kingspan Araquari - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1093,7 +1093,7 @@
   },
   {
     "tag": "seed-kingspan-cambui",
-    "name": "[Seed APS] Kingspan Cambuí - Ambiente de Produção",
+    "name": "Kingspan Cambuí - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1114,7 +1114,7 @@
   },
   {
     "tag": "seed-kingspan-leme",
-    "name": "[Seed APS] Kingspan Leme - Ambiente de Produção",
+    "name": "Kingspan Leme - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1135,7 +1135,7 @@
   },
   {
     "tag": "seed-kingspan-varzeagrande",
-    "name": "[Seed APS] Kingspan Várzea Grande - Ambiente de Produção",
+    "name": "Kingspan Várzea Grande - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1156,7 +1156,7 @@
   },
   {
     "tag": "seed-kingspan-vitoriadesantoantao",
-    "name": "[Seed APS] Kingspan Vitória de Santo Antão - Ambiente de Produção",
+    "name": "Kingspan Vitória de Santo Antão - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1177,7 +1177,7 @@
   },
   {
     "tag": "seed-kingspan-homolog",
-    "name": "[Seed APS] Kingspan - Ambiente de Homologação",
+    "name": "Kingspan - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1198,7 +1198,7 @@
   },
   {
     "tag": "seed-kingspan-anapolis-api",
-    "name": "[Seed APS] Kingspan Anápolis - API de Integração",
+    "name": "Kingspan Anápolis - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1219,7 +1219,7 @@
   },
   {
     "tag": "seed-kingspan-araquari-api",
-    "name": "[Seed APS] Kingspan Araquari - API de Integração",
+    "name": "Kingspan Araquari - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1240,7 +1240,7 @@
   },
   {
     "tag": "seed-kingspan-cambui-api",
-    "name": "[Seed APS] Kingspan Cambuí - API de Integração",
+    "name": "Kingspan Cambuí - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1261,7 +1261,7 @@
   },
   {
     "tag": "seed-kingspan-leme-api",
-    "name": "[Seed APS] Kingspan Leme - API de Integração",
+    "name": "Kingspan Leme - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1282,7 +1282,7 @@
   },
   {
     "tag": "seed-kingspan-varzeagrande-api",
-    "name": "[Seed APS] Kingspan Várzea Grande - API de Integração",
+    "name": "Kingspan Várzea Grande - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1303,7 +1303,7 @@
   },
   {
     "tag": "seed-kingspan-vitoriadesantoantao-api",
-    "name": "[Seed APS] Kingspan Vitória de Santo Antão - API de Integração",
+    "name": "Kingspan Vitória de Santo Antão - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1324,7 +1324,7 @@
   },
   {
     "tag": "seed-liner",
-    "name": "[Seed APS] Liner - Ambiente de Produção",
+    "name": "Liner - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1345,7 +1345,7 @@
   },
   {
     "tag": "seed-liner-api",
-    "name": "[Seed APS] Liner - API de Integração",
+    "name": "Liner - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1366,7 +1366,7 @@
   },
   {
     "tag": "seed-linkplas",
-    "name": "[Seed APS] Linkplas - Ambiente de Produção",
+    "name": "Linkplas - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1387,7 +1387,7 @@
   },
   {
     "tag": "seed-linkplas-homolog",
-    "name": "[Seed APS] Linkplas - Ambiente de Homologação",
+    "name": "Linkplas - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1408,7 +1408,7 @@
   },
   {
     "tag": "seed-linkplas-api",
-    "name": "[Seed APS] Linkplas - API de Integração",
+    "name": "Linkplas - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1429,7 +1429,7 @@
   },
   {
     "tag": "seed-liotecnica",
-    "name": "[Seed APS] Liotécnica - Ambiente de Produção",
+    "name": "Liotécnica - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1450,7 +1450,7 @@
   },
   {
     "tag": "seed-liotecnica-homolog",
-    "name": "[Seed APS] Liotécnica - Ambiente de Homologação",
+    "name": "Liotécnica - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1471,7 +1471,7 @@
   },
   {
     "tag": "seed-liotecnica-api",
-    "name": "[Seed APS] Liotécnica - API de Integração",
+    "name": "Liotécnica - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1492,7 +1492,7 @@
   },
   {
     "tag": "seed-medal",
-    "name": "[Seed APS] Medal - Ambiente de Produção",
+    "name": "Medal - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1513,7 +1513,7 @@
   },
   {
     "tag": "seed-medal-homolog",
-    "name": "[Seed APS] Medal - Ambiente de Homologação",
+    "name": "Medal - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1534,7 +1534,7 @@
   },
   {
     "tag": "seed-medal-api",
-    "name": "[Seed APS] Medal - API de Integração",
+    "name": "Medal - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1555,7 +1555,7 @@
   },
   {
     "tag": "seed-nokianpanimo",
-    "name": "[Seed APS] Nokian Panimo - Ambiente de Produção",
+    "name": "Nokian Panimo - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1576,7 +1576,7 @@
   },
   {
     "tag": "seed-nokianpanimo-api",
-    "name": "[Seed APS] Nokian Panimo - API de Integração",
+    "name": "Nokian Panimo - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1597,7 +1597,7 @@
   },
   {
     "tag": "seed-sintex",
-    "name": "[Seed APS] Sintex - Ambiente de Produção",
+    "name": "Sintex - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1618,7 +1618,7 @@
   },
   {
     "tag": "seed-sintex-producao",
-    "name": "[Seed APS] Sintex Produção - Ambiente de Produção",
+    "name": "Sintex Produção - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1639,7 +1639,7 @@
   },
   {
     "tag": "seed-sintex-homolog",
-    "name": "[Seed APS] Sintex - Ambiente de Homologação",
+    "name": "Sintex - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1660,7 +1660,7 @@
   },
   {
     "tag": "seed-sintex-api",
-    "name": "[Seed APS] Sintex - API de Integração",
+    "name": "Sintex - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1681,7 +1681,7 @@
   },
   {
     "tag": "seed-sintex-producao-api",
-    "name": "[Seed APS] Sintex Produção - API de Integração",
+    "name": "Sintex Produção - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1702,7 +1702,7 @@
   },
   {
     "tag": "seed-supley",
-    "name": "[Seed APS] Supley - Ambiente de Produção",
+    "name": "Supley - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1723,7 +1723,7 @@
   },
   {
     "tag": "seed-supley-homolog",
-    "name": "[Seed APS] Supley - Ambiente de Homologação",
+    "name": "Supley - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1744,7 +1744,7 @@
   },
   {
     "tag": "seed-supley-api",
-    "name": "[Seed APS] Supley - API de Integração",
+    "name": "Supley - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1765,7 +1765,7 @@
   },
   {
     "tag": "seed-taf",
-    "name": "[Seed APS] TAF - Ambiente de Produção",
+    "name": "TAF - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1786,7 +1786,7 @@
   },
   {
     "tag": "seed-taf-homolog",
-    "name": "[Seed APS] TAF - Ambiente de Homologação",
+    "name": "TAF - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1807,7 +1807,7 @@
   },
   {
     "tag": "seed-taf-api",
-    "name": "[Seed APS] TAF - API de Integração",
+    "name": "TAF - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1828,7 +1828,7 @@
   },
   {
     "tag": "seed-vale-dipe",
-    "name": "[Seed APS] Vale Dipe - Ambiente de Produção",
+    "name": "Vale Dipe - Ambiente de Produção",
     "description": "Status do ambiente Seed APS",
     "cron": "*/2 * * * *",
     "default_status": "UP",
@@ -1849,7 +1849,7 @@
   },
   {
     "tag": "seed-vale-dipe-homolog",
-    "name": "[Seed APS] Vale Dipe - Ambiente de Homologação",
+    "name": "Vale Dipe - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1870,7 +1870,7 @@
   },
   {
     "tag": "seed-vale-homolog",
-    "name": "[Seed APS] Vale - Ambiente de Homologação",
+    "name": "Vale - Ambiente de Homologação",
     "description": "Status do ambiente Seed APS",
     "cron": "*/10 * * * *",
     "default_status": "UP",
@@ -1891,7 +1891,7 @@
   },
   {
     "tag": "seed-vale-dipe-api",
-    "name": "[Seed APS] Vale Dipe - API de Integração",
+    "name": "Vale Dipe - API de Integração",
     "description": "Status da API de Integração",
     "cron": "*/5 * * * *",
     "default_status": "UP",
@@ -1912,7 +1912,7 @@
   },
   {
     "tag": "coortex-tutorial-mesas",
-    "name": "[Coortex APS] Tutorial Mesas - Ambiente de Produção",
+    "name": "Tutorial Mesas - Ambiente de Produção",
     "description": "Status do ambiente Coortex APS",
     "cron": "* * * * *",
     "default_status": "UP",
@@ -1933,7 +1933,7 @@
   },
   {
     "tag": "coortex-dev-tutorial-mesas",
-    "name": "[Coortex APS] Tutorial Mesas - Ambiente de Desenvolvimento",
+    "name": "Tutorial Mesas - Ambiente de Desenvolvimento",
     "description": "Status do ambiente Coortex APS",
     "cron": "*/5 * * * *",
     "default_status": "UP",
