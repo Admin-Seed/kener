@@ -4,8 +4,8 @@
   "logo": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/logo-white.png",
   "favicon": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/favicon-32.png",
   "hero": {
-    "title": "Seed APS — Service Status",
-    "subtitle": "Live availability of customer environments and shared infrastructure."
+    "title": "Seed APS — Status dos Serviços",
+    "subtitle": "Disponibilidade dos ambientes de clientes e da infraestrutura compartilhada."
   },
   "kenerTheme": "dark",
   "themeToggle": "NO",
@@ -32,7 +32,7 @@
       "iconURL": ""
     },
     {
-      "name": "Login",
+      "name": "Entrar",
       "url": "/account/signin",
       "iconURL": ""
     }
@@ -40,7 +40,7 @@
   "metaTags": [
     {
       "key": "description",
-      "value": "Live availability of Seed APS customer environments and shared infrastructure."
+      "value": "Disponibilidade dos ambientes de clientes e da infraestrutura compartilhada da Seed APS."
     },
     {
       "key": "robots",
@@ -52,7 +52,7 @@
     },
     {
       "key": "og:description",
-      "value": "Live availability of Seed APS customer environments and shared infrastructure."
+      "value": "Disponibilidade dos ambientes de clientes e da infraestrutura compartilhada da Seed APS."
     },
     {
       "key": "og:type",
@@ -66,132 +66,281 @@
   "categories": [
     {
       "name": "BBlend",
-      "description": "BBlend environments.",
+      "description": "Ambientes BBlend.",
       "isHidden": false
     },
     {
       "name": "Chromo",
-      "description": "Chromo environments.",
+      "description": "Ambientes Chromo.",
       "isHidden": false
     },
     {
       "name": "Coortex",
-      "description": "Coortex environments.",
+      "description": "Ambientes Coortex.",
       "isHidden": false
     },
     {
       "name": "CPack",
-      "description": "CPack environments.",
+      "description": "Ambientes CPack.",
       "isHidden": false
     },
     {
       "name": "CSN",
-      "description": "CSN environments.",
+      "description": "Ambientes CSN.",
       "isHidden": false
     },
     {
       "name": "Erbs",
-      "description": "Erbs environments.",
+      "description": "Ambientes Erbs.",
       "isHidden": false
     },
     {
       "name": "Etical",
-      "description": "Etical environments.",
+      "description": "Ambientes Etical.",
       "isHidden": false
     },
     {
       "name": "Focus",
-      "description": "Focus environments.",
+      "description": "Ambientes Focus.",
       "isHidden": false
     },
     {
       "name": "Grano",
-      "description": "Grano environments.",
+      "description": "Ambientes Grano.",
       "isHidden": false
     },
     {
       "name": "Imply",
-      "description": "Imply environments.",
+      "description": "Ambientes Imply.",
       "isHidden": false
     },
     {
       "name": "infrastructure",
-      "description": "infrastructure environments.",
+      "description": "Ambientes infrastructure.",
       "isHidden": false
     },
     {
       "name": "Inplavel",
-      "description": "Inplavel environments.",
+      "description": "Ambientes Inplavel.",
       "isHidden": false
     },
     {
       "name": "internal",
-      "description": "internal environments.",
+      "description": "Ambientes internal.",
       "isHidden": false
     },
     {
       "name": "Isacteep",
-      "description": "Isacteep environments.",
+      "description": "Ambientes Isacteep.",
       "isHidden": false
     },
     {
       "name": "Kingspan",
-      "description": "Kingspan environments.",
+      "description": "Ambientes Kingspan.",
       "isHidden": false
     },
     {
       "name": "Liner",
-      "description": "Liner environments.",
+      "description": "Ambientes Liner.",
       "isHidden": false
     },
     {
       "name": "Linkplas",
-      "description": "Linkplas environments.",
+      "description": "Ambientes Linkplas.",
       "isHidden": false
     },
     {
       "name": "Liotécnica",
-      "description": "Liotécnica environments.",
+      "description": "Ambientes Liotécnica.",
       "isHidden": false
     },
     {
       "name": "Medal",
-      "description": "Medal environments.",
+      "description": "Ambientes Medal.",
       "isHidden": false
     },
     {
       "name": "Nokian Panimo",
-      "description": "Nokian Panimo environments.",
+      "description": "Ambientes Nokian Panimo.",
       "isHidden": false
     },
     {
       "name": "overview",
-      "description": "overview environments.",
+      "description": "Ambientes overview.",
       "isHidden": false
     },
     {
       "name": "Sintex",
-      "description": "Sintex environments.",
+      "description": "Ambientes Sintex.",
       "isHidden": false
     },
     {
       "name": "Supley",
-      "description": "Supley environments.",
+      "description": "Ambientes Supley.",
       "isHidden": false
     },
     {
       "name": "TAF",
-      "description": "TAF environments.",
+      "description": "Ambientes TAF.",
       "isHidden": false
     },
     {
       "name": "Vale Dipe",
-      "description": "Vale Dipe environments.",
+      "description": "Ambientes Vale Dipe.",
       "isHidden": false
     }
   ],
   "globalPageVisibilitySettings": {
     "showSwitcher": false,
     "forceExclusivity": false
+  },
+  "i18n": {
+    "defaultLocale": "pt-BR",
+    "locales": [
+      {
+        "code": "cs",
+        "name": "Čeština",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "dk",
+        "name": "Dansk",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "de",
+        "name": "Deutsch",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "en",
+        "name": "English",
+        "selected": true,
+        "disabled": false
+      },
+      {
+        "code": "es",
+        "name": "Español",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "fr",
+        "name": "Français",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "it",
+        "name": "Italiano",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "ja",
+        "name": "Japanese",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "ko",
+        "name": "Korean",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "nl",
+        "name": "Nederlands",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "nb-NO",
+        "name": "Norsk Bokmål",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "fa",
+        "name": "Persian",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "pl",
+        "name": "Polski",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "pt-BR",
+        "name": "Português (Brasil)",
+        "selected": true,
+        "disabled": false
+      },
+      {
+        "code": "sk",
+        "name": "Slovenčina",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "vi",
+        "name": "Tiếng Việt",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "tr",
+        "name": "Türkçe",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "ru",
+        "name": "Русский",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "uk",
+        "name": "Українська",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "hi",
+        "name": "हिन्दी",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "zh-CN",
+        "name": "简体中文",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "zh-TW",
+        "name": "繁體中文（台灣）",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "zh-MO",
+        "name": "繁體中文（澳門）",
+        "selected": false,
+        "disabled": false
+      },
+      {
+        "code": "zh-HK",
+        "name": "繁體中文（香港）",
+        "selected": false,
+        "disabled": false
+      }
+    ]
   }
 }
