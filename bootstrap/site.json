@@ -355,7 +355,7 @@
   },
   "theme": "light",
   "font": {
-    "cssSrc": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/custom.css",
+    "cssSrc": "https://cdn.jsdelivr.net/gh/Admin-Seed/kener@main/brand/custom.css",
     "family": ""
   }
 }
