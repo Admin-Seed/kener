@@ -19,11 +19,354 @@
     }
   },
   {
-    "page_path": "seed",
-    "page_title": "Seed",
-    "page_header": "Seed APS environments",
-    "page_subheader": "Availability of Seed APS customer environments.",
-    "from_category": "seed",
+    "page_path": "bblend",
+    "page_title": "BBlend",
+    "page_header": "BBlend",
+    "page_subheader": "Service availability for BBlend.",
+    "from_category": "BBlend",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "chromo",
+    "page_title": "Chromo",
+    "page_header": "Chromo",
+    "page_subheader": "Service availability for Chromo.",
+    "from_category": "Chromo",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "cpack",
+    "page_title": "CPack",
+    "page_header": "CPack",
+    "page_subheader": "Service availability for CPack.",
+    "from_category": "CPack",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "csn",
+    "page_title": "CSN",
+    "page_header": "CSN",
+    "page_subheader": "Service availability for CSN.",
+    "from_category": "CSN",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "erbs",
+    "page_title": "Erbs",
+    "page_header": "Erbs",
+    "page_subheader": "Service availability for Erbs.",
+    "from_category": "Erbs",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "etical",
+    "page_title": "Etical",
+    "page_header": "Etical",
+    "page_subheader": "Service availability for Etical.",
+    "from_category": "Etical",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "focus",
+    "page_title": "Focus",
+    "page_header": "Focus",
+    "page_subheader": "Service availability for Focus.",
+    "from_category": "Focus",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "grano",
+    "page_title": "Grano",
+    "page_header": "Grano",
+    "page_subheader": "Service availability for Grano.",
+    "from_category": "Grano",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "imply",
+    "page_title": "Imply",
+    "page_header": "Imply",
+    "page_subheader": "Service availability for Imply.",
+    "from_category": "Imply",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "inplavel",
+    "page_title": "Inplavel",
+    "page_header": "Inplavel",
+    "page_subheader": "Service availability for Inplavel.",
+    "from_category": "Inplavel",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "isacteep",
+    "page_title": "Isacteep",
+    "page_header": "Isacteep",
+    "page_subheader": "Service availability for Isacteep.",
+    "from_category": "Isacteep",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "kingspan",
+    "page_title": "Kingspan",
+    "page_header": "Kingspan",
+    "page_subheader": "Service availability for Kingspan.",
+    "from_category": "Kingspan",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "liner",
+    "page_title": "Liner",
+    "page_header": "Liner",
+    "page_subheader": "Service availability for Liner.",
+    "from_category": "Liner",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "linkplas",
+    "page_title": "Linkplas",
+    "page_header": "Linkplas",
+    "page_subheader": "Service availability for Linkplas.",
+    "from_category": "Linkplas",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "liotecnica",
+    "page_title": "Liotécnica",
+    "page_header": "Liotécnica",
+    "page_subheader": "Service availability for Liotécnica.",
+    "from_category": "Liotécnica",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "medal",
+    "page_title": "Medal",
+    "page_header": "Medal",
+    "page_subheader": "Service availability for Medal.",
+    "from_category": "Medal",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "nokian-panimo",
+    "page_title": "Nokian Panimo",
+    "page_header": "Nokian Panimo",
+    "page_subheader": "Service availability for Nokian Panimo.",
+    "from_category": "Nokian Panimo",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "sintex",
+    "page_title": "Sintex",
+    "page_header": "Sintex",
+    "page_subheader": "Service availability for Sintex.",
+    "from_category": "Sintex",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "supley",
+    "page_title": "Supley",
+    "page_header": "Supley",
+    "page_subheader": "Service availability for Supley.",
+    "from_category": "Supley",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "taf",
+    "page_title": "TAF",
+    "page_header": "TAF",
+    "page_subheader": "Service availability for TAF.",
+    "from_category": "TAF",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 90,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-list"
+    }
+  },
+  {
+    "page_path": "vale-dipe",
+    "page_title": "Vale Dipe",
+    "page_header": "Vale Dipe",
+    "page_subheader": "Service availability for Vale Dipe.",
+    "from_category": "Vale Dipe",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
     "page_settings": {
       "monitor_status_history_days": {
         "desktop": 90,
@@ -35,23 +378,12 @@
   {
     "page_path": "coortex",
     "page_title": "Coortex",
-    "page_header": "Coortex environments",
-    "page_subheader": "Availability of Coortex production environments.",
-    "from_category": "coortex",
-    "page_settings": {
-      "monitor_status_history_days": {
-        "desktop": 90,
-        "mobile": 30
-      },
-      "monitor_layout_style": "default-list"
-    }
-  },
-  {
-    "page_path": "coortex-dev",
-    "page_title": "Coortex Dev",
-    "page_header": "Coortex development environments",
-    "page_subheader": "Availability of Coortex development environments.",
-    "from_category": "coortex dev",
+    "page_header": "Coortex",
+    "page_subheader": "Service availability for Coortex environments.",
+    "from_category": "Coortex",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
     "page_settings": {
       "monitor_status_history_days": {
         "desktop": 90,

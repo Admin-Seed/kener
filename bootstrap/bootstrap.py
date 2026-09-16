@@ -13,7 +13,7 @@ not, and each site key is PATCHed in place. Nothing is ever deleted.
 Usage:
     export KENER_URL=https://uptime.seedaps.com     # or http://localhost:3001
     export KENER_API_KEY=...                        # Settings -> API Keys
-    python3 bootstrap.py [--dry-run] [--site-only] [--monitors-only]
+    python3 bootstrap.py [--dry-run] [--site-only] [--monitors-only] [--prune-pages]
 
 Stdlib only: there is no jq and no pip on the host this runs on.
 """
@@ -34,6 +34,7 @@ KEY = os.environ.get("KENER_API_KEY", "")
 DRY = "--dry-run" in sys.argv
 SITE_ONLY = "--site-only" in sys.argv
 MONITORS_ONLY = "--monitors-only" in sys.argv
+PRUNE = "--prune-pages" in sys.argv
 
 if not BASE or not KEY:
     sys.exit("set KENER_URL and KENER_API_KEY")
@@ -159,14 +160,12 @@ def apply_pages():
 
     failed = 0
     for pg in pages:
+        # A page selects its rows by explicit `tags`, or by `from_category`
+        # (derived from monitors.json so a new environment lands automatically),
+        # or by both -- a company page is its category plus the shared
+        # Database Gateway, which belongs to no single company.
         if "tags" in pg:
             tags = list(pg["tags"])
-            unknown = [t for t in tags if t not in known]
-            if unknown:
-                print("%-16s FAILED - not in monitors.json: %s"
-                      % (pg["page_path"], ", ".join(unknown)))
-                failed += 1
-                continue
         else:
             tags = [m["tag"] for m in monitors
                     if m["category_name"] == pg["from_category"]]
@@ -175,9 +174,19 @@ def apply_pages():
                       % (pg["page_path"], pg["from_category"]))
                 failed += 1
                 continue
+        for t in pg.get("include_tags", []):
+            if t not in tags:
+                tags.append(t)
+
+        unknown = [t for t in tags if t not in known]
+        if unknown:
+            print("%-16s FAILED - not in monitors.json: %s"
+                  % (pg["page_path"], ", ".join(unknown)))
+            failed += 1
+            continue
 
         body = dict((k, v) for k, v in pg.items()
-                    if k not in ("from_category", "tags"))
+                    if k not in ("from_category", "tags", "include_tags"))
         body["monitors"] = tags
 
         if DRY:
@@ -201,6 +210,37 @@ def apply_pages():
     return failed
 
 
+def prune_pages():
+    """Delete pages the instance still has but pages.json no longer declares.
+
+    Behind a flag, and never implicit: deleting a page is not recoverable from
+    this repository, and a typo'd page_path would otherwise silently retire a
+    live page. The home page is never a candidate.
+    """
+    declared = set(pg["page_path"] for pg in load(PAGES))
+    code, body = call("GET", "/api/v4/pages")
+    if code != 200:
+        print("could not list pages: http %s" % code)
+        return 1
+    live = body.get("pages", body) if isinstance(body, dict) else body
+
+    failed = 0
+    for p in live:
+        path = p.get("page_path") or "~home"
+        if path in declared or path == "~home":
+            continue
+        if DRY:
+            print("%-16s would DELETE" % path)
+            continue
+        code, resp = call("DELETE", "/api/v4/pages/" + path)
+        if code in (200, 204):
+            print("%-16s deleted" % path)
+        else:
+            print("%-16s FAILED to delete: http %s: %s" % (path, code, str(resp)[:200]))
+            failed += 1
+    return failed
+
+
 def main():
     failed = 0
     if not MONITORS_ONLY:
@@ -213,6 +253,10 @@ def main():
         print()
         print("--- pages ---")
         failed += apply_pages()
+        if PRUNE:
+            print()
+            print("--- retired pages ---")
+            failed += prune_pages()
     return 1 if failed else 0
 
 

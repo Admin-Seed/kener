@@ -1,18 +1,14 @@
 {
   "siteName": "Seed APS",
   "title": "Seed APS — Status",
-
   "logo": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/logo-white.png",
   "favicon": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/favicon-32.png",
-
   "hero": {
     "title": "Seed APS — Service Status",
     "subtitle": "Live availability of customer environments and shared infrastructure."
   },
-
   "kenerTheme": "dark",
   "themeToggle": "NO",
-
   "colors": {
     "UP": "#67ab95",
     "DOWN": "#ca3038",
@@ -29,17 +25,18 @@
     "ACCENT": "#22334f",
     "ACCENT_FOREGROUND": "#2a8ff4"
   },
-
   "nav": [
-    { "name": "All", "url": "/", "iconURL": "" },
-    { "name": "Seed tenants", "url": "/seed", "iconURL": "" },
-    { "name": "Coortex", "url": "/coortex", "iconURL": "" },
-    { "name": "Coortex dev", "url": "/coortex-dev", "iconURL": "" },
-    { "name": "Internal", "url": "/internal", "iconURL": "" },
-    { "name": "Infrastructure", "url": "/infrastructure", "iconURL": "" },
-    { "name": "Login", "url": "/account/signin", "iconURL": "" }
+    {
+      "name": "Status",
+      "url": "/",
+      "iconURL": ""
+    },
+    {
+      "name": "Login",
+      "url": "/account/signin",
+      "iconURL": ""
+    }
   ],
-
   "metaTags": [
     {
       "key": "description",
@@ -66,32 +63,135 @@
       "value": "Seed APS"
     }
   ],
-
   "categories": [
     {
-      "name": "seed",
-      "description": "Seed APS tenants on the shared multi-tenant application.",
+      "name": "BBlend",
+      "description": "BBlend environments.",
       "isHidden": false
     },
     {
-      "name": "coortex",
-      "description": "Coortex production environments.",
+      "name": "Chromo",
+      "description": "Chromo environments.",
       "isHidden": false
     },
     {
-      "name": "coortex dev",
-      "description": "Coortex development environments.",
+      "name": "Coortex",
+      "description": "Coortex environments.",
       "isHidden": false
     },
     {
-      "name": "internal",
-      "description": "Applications this host runs and publishes.",
+      "name": "CPack",
+      "description": "CPack environments.",
+      "isHidden": false
+    },
+    {
+      "name": "CSN",
+      "description": "CSN environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Erbs",
+      "description": "Erbs environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Etical",
+      "description": "Etical environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Focus",
+      "description": "Focus environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Grano",
+      "description": "Grano environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Imply",
+      "description": "Imply environments.",
       "isHidden": false
     },
     {
       "name": "infrastructure",
-      "description": "Shared certificates and the database gateway.",
+      "description": "infrastructure environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Inplavel",
+      "description": "Inplavel environments.",
+      "isHidden": false
+    },
+    {
+      "name": "internal",
+      "description": "internal environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Isacteep",
+      "description": "Isacteep environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Kingspan",
+      "description": "Kingspan environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Liner",
+      "description": "Liner environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Linkplas",
+      "description": "Linkplas environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Liotécnica",
+      "description": "Liotécnica environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Medal",
+      "description": "Medal environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Nokian Panimo",
+      "description": "Nokian Panimo environments.",
+      "isHidden": false
+    },
+    {
+      "name": "overview",
+      "description": "overview environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Sintex",
+      "description": "Sintex environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Supley",
+      "description": "Supley environments.",
+      "isHidden": false
+    },
+    {
+      "name": "TAF",
+      "description": "TAF environments.",
+      "isHidden": false
+    },
+    {
+      "name": "Vale Dipe",
+      "description": "Vale Dipe environments.",
       "isHidden": false
     }
-  ]
+  ],
+  "globalPageVisibilitySettings": {
+    "showSwitcher": false,
+    "forceExclusivity": false
+  }
 }
