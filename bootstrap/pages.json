@@ -93,8 +93,6 @@
     "page_subheader": "Disponibilidade dos serviços de CSN-PR.",
     "from_category": "CSN-PR",
     "include_tags": [
-      "coortex-planejamento-csn",
-      "coortex-dev-planejamento-csn",
       "infra-azure-sql"
     ],
     "page_settings": {
@@ -112,8 +110,6 @@
     "page_subheader": "Disponibilidade dos serviços de CSN-UPV.",
     "from_category": "CSN-UPV",
     "include_tags": [
-      "coortex-planejamento-csn",
-      "coortex-dev-planejamento-csn",
       "infra-azure-sql"
     ],
     "page_settings": {

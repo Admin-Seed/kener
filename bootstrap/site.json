@@ -85,11 +85,6 @@
       "isHidden": false
     },
     {
-      "name": "CSN",
-      "description": "Ambientes CSN.",
-      "isHidden": false
-    },
-    {
       "name": "CSN-PR",
       "description": "Ambientes CSN-PR.",
       "isHidden": false
