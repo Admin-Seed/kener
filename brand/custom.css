@@ -1,0 +1,32 @@
+/* Seed APS — status board overrides.
+ *
+ * Loaded through site_data.font.cssSrc, which Kener injects into <svelte:head>
+ * as <link rel="stylesheet">. That field is meant for a web font; it is the only
+ * stylesheet hook v4.1.5 exposes, and it is used here deliberately rather than
+ * because no better one was looked for.
+ *
+ * ---------------------------------------------------------------------------
+ * Hide the "Included Monitors (n)" drawer on GROUP rows.
+ *
+ * MonitorBar.svelte renders it whenever a group has members:
+ *     showGroupPopover = groupChildTags.length > 0 && ...
+ * and dashboardController.ts fills groupChildTags straight from the group's
+ * type_data.monitors with no filter. It is not gated by `compact`, and no site
+ * or page setting turns it off — so CSS is the only lever short of abandoning
+ * GROUP monitors, which would cost the roll-up the home page exists for.
+ *
+ * NOTE this is cosmetic. The member tags are still delivered in the page
+ * payload, so it hides the list from a reader, not from anyone reading the
+ * response. Removing them properly means not using GROUP monitors.
+ *
+ * Two rules: the first removes the whole row including its spacing, the second
+ * is a fallback that hides the trigger alone if :has() is unavailable.
+ */
+
+div.mt-2.flex.justify-center.gap-2.px-4:has(button.rounded-btn.bg-secondary) {
+    display: none !important;
+}
+
+button.rounded-btn.bg-secondary.w-full.text-xs {
+    display: none !important;
+}

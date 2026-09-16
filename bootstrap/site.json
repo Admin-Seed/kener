@@ -353,5 +353,9 @@
       }
     ]
   },
-  "theme": "light"
+  "theme": "light",
+  "font": {
+    "cssSrc": "https://raw.githubusercontent.com/Admin-Seed/kener/main/brand/custom.css",
+    "family": ""
+  }
 }
