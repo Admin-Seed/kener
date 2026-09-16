@@ -12,7 +12,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -29,7 +29,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -46,7 +46,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -63,7 +63,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -80,7 +80,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -97,7 +97,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -114,7 +114,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -131,7 +131,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -148,7 +148,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -165,7 +165,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -182,7 +182,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -199,7 +199,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -213,7 +213,7 @@
     "from_category": "infrastructure",
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -230,7 +230,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -244,7 +244,7 @@
     "from_category": "internal",
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -261,7 +261,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -278,7 +278,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -295,7 +295,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -312,7 +312,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -329,7 +329,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -346,7 +346,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -363,7 +363,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -380,7 +380,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -397,7 +397,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -414,7 +414,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -431,7 +431,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
@@ -448,7 +448,7 @@
     ],
     "page_settings": {
       "monitor_status_history_days": {
-        "desktop": 90,
+        "desktop": 30,
         "mobile": 30
       },
       "monitor_layout_style": "default-grid"
