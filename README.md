@@ -77,6 +77,7 @@ So every monitor here asserts on the response body, in its `eval` function:
 | `coortex`, `coortex dev` | body contains `Seed APS`, checked on `/` and never on `/health` |
 | `internal` → portal admin | body contains `Seed Web Admin` |
 | `internal` → n8n, signoz | parsed JSON `status == "ok"` |
+| `Serviços` (`svc-*`) | parsed JSON `status`: `Healthy` → UP, `Degraded` → DEGRADED, anything else → DOWN — on `/health/ready`, whose body is the same shape in every service |
 
 ## Certificates are checked once per certificate
 

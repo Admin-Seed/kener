@@ -453,5 +453,22 @@
       },
       "monitor_layout_style": "default-grid"
     }
+  },
+  {
+    "page_path": "servicos",
+    "page_title": "Serviços",
+    "page_header": "Serviços",
+    "page_subheader": "Readiness de cada App Service: banco e dependências, pelo /health/ready.",
+    "from_category": "Serviços",
+    "include_tags": [
+      "infra-azure-sql"
+    ],
+    "page_settings": {
+      "monitor_status_history_days": {
+        "desktop": 30,
+        "mobile": 30
+      },
+      "monitor_layout_style": "default-grid"
+    }
   }
 ]
