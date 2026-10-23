@@ -24,6 +24,7 @@ services:
   # no init container and nothing for Komodo's ignore_services to skip.
   kener:
     image: rajnandan1/kener:4.1.5
+    mem_limit: 512m
     restart: unless-stopped
 
     # NOTE: no healthcheck here on purpose. The official image already ships one
@@ -68,6 +69,7 @@ services:
   # SQLite -> PostgreSQL migration path, so this is chosen up front.
   postgres:
     image: postgres:16-alpine
+    mem_limit: 512m
     restart: unless-stopped
     environment:
       POSTGRES_USER: kener
@@ -92,6 +94,7 @@ services:
   # nothing in the docs states that Redis holds only reconstructible state.
   redis:
     image: redis:7-alpine
+    mem_limit: 256m
     restart: unless-stopped
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
