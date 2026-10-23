@@ -23,7 +23,7 @@ services:
   # The application. Runs its Knex migrations in-process at startup, so there is
   # no init container and nothing for Komodo's ignore_services to skip.
   kener:
-    image: rajnandan1/kener:4.1.5
+    image: rajnandan1/kener:4.1.8
     mem_limit: 512m
     restart: unless-stopped
 
