@@ -1,18 +1,17 @@
 # kener
 
 Deployment configuration for [Kener](https://github.com/rajnandan1/kener) on
-`seed-vm-services-eastus`. **Not a fork** — this repository holds only the
-Compose file and the monitor definitions.
+`seed-vm-services-linux-eastus`. **Not a fork** — this repository holds only
+the Compose file, the monitor definitions and the backup job (`ops/`).
 
-Deployed by Komodo as the stack `kener`. It is replacing Gatus (ADR-0007),
-running in parallel first.
+Deployed with `docker compose` from a clone at `/opt/stacks/kener` on the VM
+(see *Changing configuration*). It replaced Gatus (ADR-0007) on 2026-09-14.
 
 | | |
 | --- | --- |
-| Published | <https://status.seedaps.com> — Cloudflare Tunnel, **behind Cloudflare Access** |
-| VNet | `http://172.17.0.4:3002` |
-| Image | `rajnandan1/kener:4.1.5` |
-| At cutover | port `3001`, <https://uptime.seedaps.com> |
+| Published | <https://uptime.seedaps.com> — Cloudflare Tunnel → `localhost:3001` |
+| VNet | `http://172.17.0.5:3001` |
+| Image | `rajnandan1/kener:4.1.11` |
 
 ## Kener has no authentication of its own
 
@@ -27,25 +26,26 @@ The gate is **Cloudflare Access on the published hostname**, and it is not
 optional. Adding a tunnel ingress rule without it publishes 46 monitors, their
 hostnames and their outage history to the internet.
 
+> For `uptime.seedaps.com` this was later accepted deliberately: ADR-0010 keeps
+> the board public (see the header of `compose.yaml`). Putting Cloudflare
+> Access in front of the hostname is how that would be undone.
+
 ## Three services, and why each is here
 
 | Service | Image | Published | Why |
 | --- | --- | --- | --- |
-| `kener` | `rajnandan1/kener:4.1.5` | `3002` → `3000` | the application |
+| `kener` | `rajnandan1/kener:4.1.11` | `3001` → `3000` | the application |
 | `postgres` | `postgres:16-alpine` | — | dedicated database |
 | `redis` | `redis:7-alpine` | — | required; BullMQ queues |
 
 **Redis is not optional.** Kener will not start without `REDIS_URL`. AOF is on.
 
-**PostgreSQL is dedicated, not shared.** The only other Postgres on the host is
-`komodo-postgres-1`, which is a DocumentDB-flavoured build serving FerretDB, is
-untagged on the data layer, and is the metadata store of the control plane that
-deploys this stack. Kener's own docs recommend PostgreSQL for production, and
-there is **no SQLite → PostgreSQL migration path**, so the choice is made up
-front rather than discovered later.
+**PostgreSQL is dedicated, not shared.** Kener's own docs recommend PostgreSQL
+for production, and there is **no SQLite → PostgreSQL migration path**, so the
+choice is made up front rather than discovered later.
 
 Neither `postgres` nor `redis` publishes a port. Only `kener` does, because
-`cloudflared` runs as a systemd service on the WSL host rather than as a
+`cloudflared` runs as a systemd service on the VM host rather than as a
 container and cannot reach a Docker network by service name.
 
 ## Monitors live in the database, not in this repo
@@ -92,7 +92,8 @@ remaining, `DOWN` at 24h.
 
 | Change | How |
 | --- | --- |
-| Compose, image pin, ports, `ORIGIN` | commit here, then Redeploy the stack in Komodo |
+| Compose, image pin, ports, `ORIGIN` | PR here, merge, then on the VM: `/opt/stacks/vm-services/deploy.sh /opt/stacks/kener` |
+| Backup job (`ops/`) | PR here, merge, then on the VM copy `ops/kener-backup.sh` to `/usr/local/bin/` and the units to `/etc/systemd/system/`, `systemctl daemon-reload` |
 | A monitor | edit `bootstrap/monitors.json`, commit, run `bootstrap.py` |
 | Incidents, maintenance, pages, users | in the Kener UI — these are not in git |
 
@@ -106,7 +107,7 @@ is wrong.
 
 **Do not use the `:alpine` tag.** Upstream's own `docker-compose.yml` comments
 *"For Alpine variant use: rajnandan1/kener:alpine"*. That tag was last pushed in
-August 2025 and is a v3-era leftover. The current one is `4.1.5-alpine`.
+August 2025 and is a v3-era leftover. Use a versioned tag instead.
 
 **Do not add a Docker healthcheck for `kener`.** The official image already
 ships one against the plain `/healthcheck`. Never point a restart-on-failure
@@ -118,16 +119,13 @@ for the whole outage. `?strict=1` is for alerting, not for restarts.
 
 Nothing secret is in this repository, which is public.
 
-`KENER_SECRET_KEY` and `KENER_DB_PASSWORD` are **Komodo Variables marked
-secret**, referenced from the Komodo stack environment as `[[NAME]]` and reaching
-the container through the `.env` Komodo writes beside this Compose file at
-deploy time. `compose.yaml` refers to them as `${NAME:?…}` and fails loudly
-rather than starting with a blank value.
+`KENER_SECRET_KEY` and `KENER_DB_PASSWORD` live in the `.env` beside this
+Compose file on the VM (`/opt/stacks/kener/.env`, mode 600, ignored by git).
+`compose.yaml` refers to them as `${NAME:?…}` and fails loudly rather than
+starting with a blank value.
 
-Be aware of the limit: Komodo's `GetStack` returns `info.deployed_config` — the
-output of `docker compose config`, fully interpolated — in cleartext to any
-caller holding Read on the stack. The `secret` flag hides values from variable
-listings and logs, not from that.
+Anyone who can read that file, or run `docker inspect` / `docker compose config`
+on the VM, can read them.
 
 ## Storage
 
@@ -140,5 +138,8 @@ v4 stores uploaded logos and images as database rows; v3's `/uploads/` directory
 no longer exists. With PostgreSQL, the database volume is the only thing that
 must be backed up.
 
-Backups are nightly `pg_dump` to `C:\Backups\kener\`, off the WSL VHDX. Restore
-is documented in the `Agent` repository under `docs/runbooks/`.
+Backups are a nightly `pg_dump` (custom format) by `ops/kener-backup.sh`, run
+by `ops/kener-backup.timer` at 02:30 UTC, into `/var/backups/kener/` on the VM
+(root only, 14 kept). **That is the same disk as the database volume**: losing
+the disk loses both. An off-VM copy is still pending. Restore is documented in
+the `Agent` repository under `docs/runbooks/`.
