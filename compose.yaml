@@ -1,9 +1,9 @@
-# Kener — status page for seed-vm-services-eastus.
+# Kener — status page for seed-vm-services-linux-eastus.
 #
-# Published at https://uptime.seedaps.com through the Cloudflare Tunnel, and on
-# the Azure VNet at http://172.17.0.4:3001. It took both over from Gatus on
-# 2026-09-14 by binding the same host port, so neither the tunnel ingress rule
-# nor the netsh portproxy forwarder needed changing.
+# Published at https://uptime.seedaps.com through the Cloudflare Tunnel
+# (ingress -> http://localhost:3001), and on the Azure VNet at
+# http://172.17.0.5:3001. It took both over from Gatus on 2026-09-14 by binding
+# the same host port.
 #
 # Kener has NO whole-site authentication and no basic-auth option: the admin UI
 # and the API are gated, the status page is not. This board is therefore
@@ -11,6 +11,8 @@
 # is a deliberate, accepted decision (ADR-0010), not an oversight. Gatus, which
 # it replaced, was behind basic auth. Putting Cloudflare Access in front of the
 # hostname is how that would be undone.
+#
+# Deploy: /opt/stacks/vm-services/deploy.sh /opt/stacks/kener (no Komodo).
 name: kener
 
 x-logging: &logging
@@ -21,11 +23,17 @@ x-logging: &logging
 
 services:
   # The application. Runs its Knex migrations in-process at startup, so there is
-  # no init container and nothing for Komodo's ignore_services to skip.
+  # no init container.
   kener:
-    image: rajnandan1/kener:4.1.8
-    mem_limit: 512m
+    # 4.1.9+ is mandatory: 4.0.0-4.1.8 let a percent-encoded path
+    # (/%61pi/v4/...) reach every /api/v4 route without an API key (CVSS 9.1).
+    image: rajnandan1/kener:4.1.11
     restart: unless-stopped
+    init: true
+    mem_limit: 512m
+    memswap_limit: 512m
+    mem_reservation: 256m
+    pids_limit: 512
 
     # NOTE: no healthcheck here on purpose. The official image already ships one
     # hitting the plain /healthcheck. Do not point a restart-on-failure check at
@@ -33,10 +41,10 @@ services:
     # would restart-loop for the whole outage. Use ?strict=1 for alerting only.
 
     environment:
-      # Supplied by the Komodo stack environment from Komodo Variables, never
-      # committed here. This repository is public.
-      KENER_SECRET_KEY: ${KENER_SECRET_KEY:?missing — set it in the Komodo stack environment}
-      DATABASE_URL: postgresql://kener:${KENER_DB_PASSWORD:?missing — set it in the Komodo stack environment}@postgres:5432/kener
+      # From the .env beside this file (mode 600 on the VM), never committed.
+      # This repository is public.
+      KENER_SECRET_KEY: ${KENER_SECRET_KEY:?missing — set it in .env}
+      DATABASE_URL: postgresql://kener:${KENER_DB_PASSWORD:?missing — set it in .env}@postgres:5432/kener
 
       REDIS_URL: redis://redis:6379
       PORT: "3000"
@@ -48,8 +56,7 @@ services:
 
     ports:
       # 3001 is inherited from Gatus, deliberately: the Cloudflare Tunnel ingress
-      # rule for uptime.seedaps.com and the netsh portproxy forwarder both
-      # already point here, so the cutover needed no change to either.
+      # rule for uptime.seedaps.com already points here.
       - "3001:3000"
 
     depends_on:
@@ -62,18 +69,42 @@ services:
       - no-new-privileges:true
     logging: *logging
 
-  # Dedicated PostgreSQL. Not shared with komodo-postgres-1: that is a
-  # DocumentDB-flavoured build serving FerretDB, it is the metadata store of the
-  # control plane that deploys this stack, and it is untagged on the data layer
-  # (F-020). Kener's own docs recommend PostgreSQL for production and there is no
-  # SQLite -> PostgreSQL migration path, so this is chosen up front.
+  # Dedicated PostgreSQL. Kener's own docs recommend PostgreSQL for production
+  # and there is no SQLite -> PostgreSQL migration path, so this is chosen up
+  # front.
   postgres:
     image: postgres:16-alpine
-    mem_limit: 512m
     restart: unless-stopped
+    # Sized for a 512 MiB container: shared_buffers at ~25%, few connections
+    # (Kener's pool is 10 + 5 workers), and longer checkpoints with compressed
+    # WAL to cut writes on the VM's single shared disk.
+    command:
+      - postgres
+      - -c
+      - shared_buffers=128MB
+      - -c
+      - max_connections=40
+      - -c
+      - maintenance_work_mem=32MB
+      - -c
+      - max_parallel_workers_per_gather=0
+      - -c
+      - checkpoint_timeout=15min
+      - -c
+      - max_wal_size=1GB
+      - -c
+      - wal_compression=on
+      - -c
+      - log_checkpoints=on
+    shm_size: 128mb
+    mem_limit: 512m
+    memswap_limit: 512m
+    mem_reservation: 128m
+    pids_limit: 256
+    stop_grace_period: 60s
     environment:
       POSTGRES_USER: kener
-      POSTGRES_PASSWORD: ${KENER_DB_PASSWORD:?missing — set it in the Komodo stack environment}
+      POSTGRES_PASSWORD: ${KENER_DB_PASSWORD:?missing — set it in .env}
       POSTGRES_DB: kener
     volumes:
       - kener-postgres-data:/var/lib/postgresql/data
@@ -92,11 +123,16 @@ services:
   #
   # AOF is on because upstream's own self-hosted compose overrides enable it and
   # nothing in the docs states that Redis holds only reconstructible state.
+  # maxmemory stays well under the 256m container limit so a fork for the AOF
+  # rewrite has room; noeviction is the only policy BullMQ supports.
   redis:
     image: redis:7-alpine
-    mem_limit: 256m
     restart: unless-stopped
-    command: ["redis-server", "--appendonly", "yes"]
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "128mb", "--maxmemory-policy", "noeviction"]
+    mem_limit: 256m
+    memswap_limit: 256m
+    mem_reservation: 64m
+    pids_limit: 128
     volumes:
       - kener-redis-data:/data
     healthcheck:
@@ -109,7 +145,7 @@ services:
     logging: *logging
 
 # Neither postgres nor redis publishes a port. Only kener does, because
-# cloudflared runs as a systemd service on the WSL host rather than as a
+# cloudflared runs as a systemd service on the VM host rather than as a
 # container, so it cannot reach a Docker network by service name.
 networks:
   default:

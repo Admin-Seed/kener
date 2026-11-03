@@ -1,0 +1,9 @@
+[Unit]
+Description=Back up the Kener database to /var/backups/kener
+Documentation=https://github.com/Admin-Seed/kener
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/kener-backup.sh
