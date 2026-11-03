@@ -2,10 +2,10 @@
 Description=Nightly Kener database backup
 
 [Timer]
-# 02:30 UTC, before Komodo's own 03:00 Global Auto Update procedure.
+# 02:30 UTC, outside business hours.
 OnCalendar=*-*-* 02:30:00
-# WSL is not always running at 02:30; catch up on the next start instead of
-# silently skipping a night.
+# If the VM was off at 02:30, run on the next boot instead of silently
+# skipping a night.
 Persistent=true
 RandomizedDelaySec=300
 
